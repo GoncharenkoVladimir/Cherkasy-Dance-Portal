@@ -3,6 +3,7 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * User
@@ -53,6 +54,16 @@ class User
      *@ORM\OneToMany(targetEntity="Post", mappedBy="author")
      */
     private $post;
+
+    /** @ORM\OneToOne(targetEntity="Comment", mappedBy="author")
+     *
+     */
+    private $comments;
+
+    public function __construct()
+    {
+        $this->post = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -159,5 +170,46 @@ class User
     {
         return $this->profile;
     }
+
+    /**
+     * @return Post
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * @param Post $post
+     *
+     * @return User
+     */
+    public function addPost($post)
+    {
+        $this->post[] = $post;
+        if ($post) {
+            $post->setAuthor($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
+    /**
+     * @param mixed $comments
+     */
+    public function setComments($comments)
+    {
+        $this->comments = $comments;
+    }
+
+
 }
 

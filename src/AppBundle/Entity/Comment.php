@@ -43,9 +43,7 @@ class Comment
     private $createTime;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="author", type="string", length=255)
+     * @ORM\OneToOne(targetEntity="User", inversedBy="comments")
      */
     private $author;
 
@@ -153,7 +151,7 @@ class Comment
     /**
      * Set author
      *
-     * @param string $author
+     * @param User $author
      *
      * @return Comment
      */
@@ -166,8 +164,6 @@ class Comment
 
     /**
      * Get author
-     *
-     * @return string
      */
     public function getAuthor()
     {
@@ -223,7 +219,7 @@ class Comment
     }
 
     /**
-     * @return mixed
+     * @return Post
      */
     public function getPost()
     {
@@ -231,7 +227,7 @@ class Comment
     }
 
     /**
-     * @param mixed $post
+     * @param Post $post
      */
     public function setPost($post)
     {

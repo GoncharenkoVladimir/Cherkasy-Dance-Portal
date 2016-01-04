@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>{% block title %}Welcome!{% endblock %}</title>
+    {% block stylesheets %}{% endblock %}
+    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    <script type="text/javascript" src="{{ asset('js/all.js') }}"></script>
+    <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+
+</head>
+<body>
+{% block body %}
+    {% block header %}
+        <header>
+            <div class="container">
+                <div class="logo">
+                    <a href="{{ path('homepage') }}"></a>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="{{ path('homepage') }}">HOME</a></li>
+                        <li><a href="{{ path('homepage') }}">ABOUT</a></li>
+                        <li><a href="{{ path('homepage') }}">CONTACTS</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </header>
+        <div class="baner">
+            <h2 class="text-center">Cherkassy Dande Portal</h2>
+            {% block titlepage %}<h3 class="text-center">Dance blog</h3>{% endblock titlepage %}
+            <div class="overlay"></div>
+        </div>
+    {% endblock header %}
+    {% block content %}
+    {% endblock content %}
+    {% block footer %}
+        <div class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3">
+                        <div class="logo">
+                            <a href="{{ path('homepage') }}"></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-9">
+                        <nav>
+                            <ul>
+                                <li><a href="{{ path('homepage') }}">HOME</a></li>
+                                <li><a href="{{ path('homepage') }}">ABOUT</a></li>
+                                <li><a href="{{ path('homepage') }}">CONTACTS</a></li>
+                            </ul>
+                        </nav>
+                        <p class="text-right copyright glyphicon-copyright-mark">Made by SALSA</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock footer %}
+{% endblock %}
+{% block javascripts %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,8 @@
+AppBundle\Entity\Post:
+    post{1..50}:
+        title: <sentence($nbWords = 6)>
+        content: <text($maxNbChars = 2000)>
+        status: <randomElement(["published", "removed", "editing"])>
+        createTime: <dateTime($max = 'now')>
+        updateTime: <dateTime($max = 'now')>
+        tags: @tag*

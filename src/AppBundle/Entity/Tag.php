@@ -28,6 +28,10 @@ class Tag
      */
     private $name;
 
+    /**
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="tags")
+     */
+    private $post;
 
     /**
      * Get id
@@ -62,5 +66,22 @@ class Tag
     {
         return $this->name;
     }
+
+    /**
+     * @return Post
+     */
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * @param Post $post
+     */
+    public function setPost($post)
+    {
+        $this->post = $post;
+    }
+
 }
 

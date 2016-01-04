@@ -3,6 +3,8 @@
 namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
+use AppBundle\Entity\Tag;
 
 /**
  * Post
@@ -36,9 +38,7 @@ class Post
     private $content;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="tags", type="string", length=255)
+     * @ORM\OneToMany(targetEntity="Tag", mappedBy="post")
      */
     private $tags;
 
@@ -68,10 +68,16 @@ class Post
      */
     private $author;
 
-    /** @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
-     *
+    /**
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
      */
     private $comments;
+
+    public function __construct()
+    {
+        $this->comments = new ArrayCollection();
+        $this->tags = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -134,13 +140,16 @@ class Post
     /**
      * Set tags
      *
-     * @param string $tags
+     * @param Tag $tags
      *
      * @return Post
      */
-    public function setTags($tags)
+    public function addTags($tags)
     {
-        $this->tags = $tags;
+        $this->tags[] = $tags;
+        if ($tags) {
+            $tags->setPost($this);
+        }
 
         return $this;
     }
@@ -148,7 +157,7 @@ class Post
     /**
      * Get tags
      *
-     * @return string
+     * @return Tag
      */
     public function getTags()
     {
@@ -228,7 +237,7 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return User
      */
     public function getAuthor()
     {
@@ -236,7 +245,7 @@ class Post
     }
 
     /**
-     * @param mixed $author
+     * @param User $author
      */
     public function setAuthor($author)
     {
@@ -244,7 +253,7 @@ class Post
     }
 
     /**
-     * @return mixed
+     * @return Comment
      */
     public function getComments()
     {
@@ -252,12 +261,18 @@ class Post
     }
 
     /**
-     * @param mixed $comments
+     * @param Comment $comments
+     *
+     * @return Post
      */
-    public function setComments($comments)
+    public function addComments($comments)
     {
-        $this->comments = $comments;
-    }
+        $this->comments[] = $comments;
+        if ($comments) {
+            $comments->setPost($this);
+        }
 
+        return $this;
+    }
 }
 

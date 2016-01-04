@@ -1,19 +1,19 @@
 <?php
 
-namespace AppBundle\Controller;
+namespace AppBundle\Controller\Admin;
 
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
 
-class DefaultController extends Controller
+class AdminController extends Controller
 {
     /**
-     * @Route("/", name="homepage")
+     * @Route("/administrator", name="administrator")
      * @Template()
      */
-    public function mainAction()
+    public function administratorAction()
     {
         return [];
     }
