@@ -43,7 +43,7 @@ class Comment
     private $createTime;
 
     /**
-     * @ORM\OneToOne(targetEntity="User", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="comments")
      */
     private $author;
 

@@ -55,7 +55,7 @@ class User
      */
     private $post;
 
-    /** @ORM\OneToOne(targetEntity="Comment", mappedBy="author")
+    /** @ORM\OneToMany(targetEntity="Comment", mappedBy="author")
      *
      */
     private $comments;
@@ -195,7 +195,7 @@ class User
     }
 
     /**
-     * @return mixed
+     * @return Comment
      */
     public function getComments()
     {
@@ -203,13 +203,18 @@ class User
     }
 
     /**
-     * @param mixed $comments
+     * @param Comment $comments
+     *
+     * @return User
      */
-    public function setComments($comments)
+    public function addComments($comments)
     {
-        $this->comments = $comments;
+        $this->comments[] = $comments;
+        if ($comments) {
+            $comments->setAuthor($this);
+        }
+
+        return $this;
     }
-
-
 }
 
