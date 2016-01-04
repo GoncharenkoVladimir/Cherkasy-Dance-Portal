@@ -1,0 +1,25 @@
+{
+  "name": "Football Manager",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": ">=1.7.0",
+    "bootstrap": ">=3.3.0"
+  },
+  "homepage": "https://github.com/GoncharenkoVladimir/Football-Manager",
+  "authors": [
+    "Salsa <vova.goncharenko@ekreative.com>"
+  ],
+  "description": "",
+  "main": "",
+  "moduleType": [
+    "node"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
