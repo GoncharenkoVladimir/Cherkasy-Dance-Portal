@@ -5,4 +5,4 @@ AppBundle\Entity\Post:
         status: <randomElement(["published", "removed", "editing"])>
         createTime: <dateTime($max = 'now')>
         updateTime: <dateTime($max = 'now')>
-        tags: @tag*
+        tags: @tag{1..3}
