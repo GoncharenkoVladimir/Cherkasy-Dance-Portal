@@ -37,7 +37,7 @@ class Post
     private $content;
 
     /**
-     * @ORM\OneToMany(targetEntity="Tag", mappedBy="post")
+     * @ORM\ManyToMany(targetEntity="Tag",  mappedBy="posts")
      */
     private $tags;
 
@@ -136,32 +136,7 @@ class Post
         return $this->content;
     }
 
-    /**
-     * Set tags
-     *
-     * @param Tag $tags
-     *
-     * @return Post
-     */
-    public function addTags($tags)
-    {
-        $this->tags[] = $tags;
-        if ($tags) {
-            $tags->setPost($this);
-        }
 
-        return $this;
-    }
-
-    /**
-     * Get tags
-     *
-     * @return Tag
-     */
-    public function getTags()
-    {
-        return $this->tags;
-    }
 
     /**
      * Set status
@@ -252,7 +227,7 @@ class Post
     }
 
     /**
-     * @return Comment
+     * @return array
      */
     public function getComments()
     {
@@ -260,18 +235,76 @@ class Post
     }
 
     /**
-     * @param Comment $comments
+     * @param Comment $comment
      *
-     * @return Post
+     * @return array
      */
-    public function addComments($comments)
+    public function addComments($comment)
     {
-        $this->comments[] = $comments;
-        if ($comments) {
-            $comments->setPost($this);
+        $this->comments[] = $comment;
+        if ($comment) {
+            $comment->setPost($this);
         }
 
         return $this;
     }
-}
 
+    /**
+     * Add tag
+     *
+     * @param Tag $tag
+     *
+     * @return Post
+     */
+    public function addTag(Tag $tag)
+    {
+        $tag->addPost($this);
+        $this->tags[] = $tag;
+
+        return $this;
+    }
+
+    /**
+     * Remove tag
+     *
+     * @param Tag $tag
+     */
+    public function removeTag(Tag $tag)
+    {
+        $this->tags->removeElement($tag);
+    }
+
+    /**
+     * Get tags
+     *
+     * @return ArrayCollection
+     */
+    public function getTags()
+    {
+        return $this->tags;
+    }
+
+    /**
+     * Add comment
+     *
+     * @param Comment $comment
+     *
+     * @return Post
+     */
+    public function addComment(Comment $comment)
+    {
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param Comment $comment
+     */
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+}

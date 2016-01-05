@@ -2,7 +2,9 @@
 
 namespace AppBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
+use AppBundle\Entity\Post;
 
 /**
  * Tag
@@ -29,9 +31,14 @@ class Tag
     private $name;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Post", inversedBy="tags")
+     * @ORM\ManyToMany(targetEntity="Post", inversedBy="tags")
      */
-    private $post;
+    private $posts;
+
+    public function __construct()
+    {
+        $this->posts = new ArrayCollection();
+    }
 
     /**
      * Get id
@@ -67,21 +74,39 @@ class Tag
         return $this->name;
     }
 
+
+
     /**
-     * @return Post
+     * Add post
+     *
+     * @param Post $post
+     *
+     * @return Tag
      */
-    public function getPost()
+    public function addPost(Post $post)
     {
-        return $this->post;
+        $this->posts[] = $post;
+
+        return $this;
     }
 
     /**
+     * Remove post
+     *
      * @param Post $post
      */
-    public function setPost($post)
+    public function removePost(Post $post)
     {
-        $this->post = $post;
+        $this->posts->removeElement($post);
     }
 
+    /**
+     * Get posts
+     *
+     * @return ArrayCollection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
+    }
 }
-
