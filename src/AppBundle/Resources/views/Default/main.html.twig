@@ -9,16 +9,23 @@
     <script type="text/javascript" src="{{ asset('js/main.js') }}"></script>
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
-
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 </head>
 <body>
 {% block body %}
     {% block header %}
+        <div class="baner">
+            <h2 class="text-center">Cherkassy Dande Portal</h2>
+            {% block titlepage %}<h3 class="text-center">Dance blog</h3>{% endblock titlepage %}
+            <div class="overlay"></div>
+        </div>
         <header>
             <div class="container">
-                <div class="logo">
-                    <a href="{{ path('homepage') }}"></a>
-                </div>
+                {#<div class="logo">#}
+                    {#<a href="{{ path('homepage') }}"></a>#}
+                {#</div>#}
                 <nav>
                     <ul>
                         <li><a href="{{ path('homepage') }}">HOME</a></li>
@@ -28,33 +35,136 @@
                 </nav>
             </div>
         </header>
-        <div class="baner">
-            <h2 class="text-center">Cherkassy Dande Portal</h2>
-            {% block titlepage %}<h3 class="text-center">Dance blog</h3>{% endblock titlepage %}
-            <div class="overlay"></div>
-        </div>
     {% endblock header %}
     {% block content %}
+        <div class="main-wrapper container">
+            <div class="row">
+                <div class="col-lg-8"></div>
+                <div class="col-lg-4">
+                    <aside>
+                        <div class="widget" id="welcom_text">
+                            <h2 class="title">WELCOME</h2><hr>
+                            <div class="widget-content">
+                                Asterism is a modern and responsive Blogger template, perfect for fashion and lifestyle blogs. Here you can add a welcome text.
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="widget" id="login_form">
+                            <h2 class="title">Sign Up</h2><hr>
+                            <div class="widget-content">
+                                <!-- Begin MailChimp Signup Form -->
+                                <div id="mc_embed_signup">
+                                    <form action="" method="post" id="mc-embedded-signup-form" name="" class="validate" novalidate="">
+                                        <div id="mc_embed_signup_scroll">
+                                            <p>Enter your e-mail and password!!!</p>
+                                        </div>
+                                    </form>
+                                </div>
+
+                                <!--End mc_embed_signup-->
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="widget" id="categories">
+                            <h2>CATEGORIES</h2><hr>
+                            <div class="widget-content categories-widget-content">
+                                <ul>
+                                    <li>
+                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Books">Books</a>
+                                    </li>
+                                    <li>
+                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/DIY">DIY</a>
+                                    </li>
+                                    <li>
+                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Events">Events</a>
+                                    </li>
+                                    <li>
+                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Fashion">Fashion</a>
+                                    </li>
+                                    <li>
+                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Food">Food</a>
+                                    </li>
+                                    <li>
+                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Lifestyle">Lifestyle</a>
+                                    </li>
+                                    <li>
+                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Movies">Movies</a>
+                                    </li>
+                                    <li>
+                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Travel">Travel</a>
+                                    </li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+
+                        <div class="widget" id="search">
+                            <h2 class="title">SEARCH</h2><hr>
+                            <div class="widget-content">
+                                <form action="" id="searchthis" method="get" style="display: inline-block;">
+                                    <input class="search-box" name="q" placeholder="KEYWORD + ENTER" size="33" type="text">
+                                    <input class="search-btn" type="submit" value="">
+                                </form>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+
+                        <div class="widget PopularPosts" id="PopularPosts">
+                            <h2>FEATURED</h2><hr>
+                            <div class="widget-content popular-posts">
+                                <ul>
+                                    <li>
+                                        <div class="item-thumbnail-only">
+                                            <div class="item-thumbnail">
+                                                <a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html" target="_blank">
+                                                    <img alt="" border="0" height="500" src="http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s500-c/keyboard-old-typewriter-3319.jpg" width="500">
+                                                </a>
+                                            </div>
+                                            <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html">Wypas cookie caramels soufflé caramels cookie </a></div>
+                                        </div>
+                                        <div style="clear: both;"></div>
+                                    </li>
+                                    <li>
+                                        <div class="item-thumbnail-only">
+                                            <div class="item-thumbnail">
+                                                <a href="http://asterism-mairagall.blogspot.com/2015/01/lollipop-dragee-carrot-cake.html" target="_blank">
+                                                    <img alt="" border="0" height="500" src="http://2.bp.blogspot.com/-lTmlQ2I0EKE/VQNeMx10mJI/AAAAAAAADgY/pqSbka6t0-Y/s500-c/DeathtoStock_Desk6.jpg" width="500">
+                                                </a>
+                                            </div>
+                                            <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/01/lollipop-dragee-carrot-cake.html">Lollipop dragée carrot cake</a></div>
+                                        </div>
+                                        <div style="clear: both;"></div>
+                                    </li>
+                                    <li>
+                                        <div class="item-thumbnail-only">
+                                            <div class="item-thumbnail">
+                                                <a href="http://asterism-mairagall.blogspot.com/2015/01/marzipan-sugar-plum-liquorice-roll.html" target="_blank">
+                                                    <img alt="" border="0" height="500" src="http://3.bp.blogspot.com/-OmZpsNGaFoo/VUDqAzHt8QI/AAAAAAAADt4/imVmE0UvOoU/s500-c/DeathtoStock3.jpg" width="500">
+                                                </a>
+                                            </div>
+                                            <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/01/marzipan-sugar-plum-liquorice-roll.html">Marzipan sugar plum liquorice roll.</a></div>
+                                        </div>
+                                        <div style="clear: both;"></div>
+                                    </li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </div>
     {% endblock content %}
     {% block footer %}
         <div class="footer">
             <div class="container">
-                <div class="row">
-                    <div class="col-lg-3">
-                        <div class="logo">
-                            <a href="{{ path('homepage') }}"></a>
-                        </div>
-                    </div>
-                    <div class="col-lg-9">
-                        <nav>
-                            <ul>
-                                <li><a href="{{ path('homepage') }}">HOME</a></li>
-                                <li><a href="{{ path('homepage') }}">ABOUT</a></li>
-                                <li><a href="{{ path('homepage') }}">CONTACTS</a></li>
-                            </ul>
-                        </nav>
-                        <p class="text-right copyright glyphicon-copyright-mark">Made by SALSA</p>
-                    </div>
+                <div class="bottom-credits">
+                    © <script type="text/javascript">var creditsyear = new Date();document.write(creditsyear.getFullYear());</script>2016
+                    <a href="http://asterism-mairagall.blogspot.com/" title="ASTERISM">ASTERISM</a><br>
+                    <i class="fa fa-times">
+                    </i><a href="http://www.mairagall.com/en/" id="donotremove" target="_blank">Maira Gall</a>
                 </div>
             </div>
         </div>
@@ -62,5 +172,6 @@
 {% endblock %}
 {% block javascripts %}
 {% endblock %}
+<a class="go-top" href="#" style="display: inline;"><i class="fa fa-caret-up"></i></a>
 </body>
 </html>

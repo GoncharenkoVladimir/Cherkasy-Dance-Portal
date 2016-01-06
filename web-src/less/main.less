@@ -1,11 +1,39 @@
 /*---------- app.less ------------*/
 @import "../../bower_components/bootstrap/less/bootstrap.less";
 
+h2 {
+    margin: 0 0 10px;
+    font: 600 15px Open Sans, sans-serif;
+    color: #525252;
+    text-align: left;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+a img {
+    border: none;
+    position: relative;
+}
+a:link {
+    text-decoration: none;
+    color: #e0e3e8;
+}
+div.clear {
+    clear: both;
+}
+a.go-top {
+    position: fixed;
+    bottom: 3em;
+    right: 3em;
+    color: #525252;
+    font-size: 20px;
+    display: none;
+    margin: 0;
+    text-transform: uppercase;
+}
 header {
-    height: 70px;
-    position: absolute;
-    top: 0;
-    z-index: 100;
+    //position: absolute;
+    //top: 0;
+    //z-index: 100;
     width: 100%;
     .logo{
         a{
@@ -17,238 +45,227 @@ header {
         float: left;
     }
     nav {
-        max-width: 500px;
         width: 100%;
-        float: right;
         padding: 15px 20px;
         ul{
-            float: right;
+            display: block;
+            text-align: center;
+            padding: 0;
+            margin: 0;
             li{
-                list-style: none;
+                border: none;
+                float: none;
                 display: inline-block;
-                float: left;
-                border: 1px solid white;
+                zoom: 1;
                 a{
-                    display: table-cell;
-                    vertical-align: middle;
-                    height: 42px;
-                    padding: 0 10px;
-                    color: white;
-                }
-            }
-            li:hover{
-                background: white;
-                a{
-                    color: #00b3ee;
-                    text-decoration: none;
+                    display: inline-block;
+                    padding: 20px;
+                    font: 400 10px Open Sans, sans-serif;
+                    color: #1a1a1a;
+                    text-transform: uppercase;
+                    letter-spacing: 5px;
                 }
             }
         }
     }
 }
 .baner{
-    background: url("../images/top_bg.png") center top no-repeat;
+    background: url("../images/marble-by-heyhan.png") center top no-repeat;
     background-size: cover;
-    min-height:500px;
+    min-height:400px;
     position: relative;
     .overlay{
         top: 0;
-        background-color: rgba(0,0,0,0.7);
+        background-color: rgba(0,0,0,0.2);
         height: 100%;
         position: absolute;
         width: 100%;
     }
     h2,h3{
-        color: white;
+        color: #1A1A1A;
+        font-family: 'Raleway', Arial, serif;
+        font-weight: 200;
         margin: 0;
         position: relative;
         z-index:2;
-        font-size: 40px;
+        font-size: 30px;
+        opacity: 0.8;
     }
     h2{
-        padding-top: 200px;
-        font-size: 66px;
+        padding-top: 130px;
+        font-size: 65px;
         margin-bottom: 20px;
     }
 }
 
-.content.home-page{
-    .title-table{
-        display: block;
-        margin: 0;
-        height: 25px;
-        background-color: #2b669a;
-        color: white;
-        vertical-align: middle;
-        font-size: 14px;
-        padding: 5px 20px;
-        width: 100%;
+.main-wrapper{
+    border-top: 1px solid #1a1a1a;
+    padding: 50px 0 0;
+    hr {
+        width: 30%;
+        border: 1px solid #e0e3e8;
     }
-    table{
-        width: 100%;
-        margin-bottom: 20px;
-        border: 1px solid #66afe9;
-        tr{
-            td, th{
-                width: 10%;
-                min-width: 30px;
-                text-align: right;
-                padding: 0 5px;
-                a{
-                    color: #122b40;
-                }
-                a:hover{
-                    text-decoration: none;
-                    color: #66afe9;
-                }
-                .flag{
-                    display: inline-block;
-                    width: 16px;
-                    height: 11px;
-                    margin-right: 10px;
-                }
+    .widget {
+        border: 1px solid #1a1a1a;
+        padding: 35px;
+        text-align: center;
+        margin: 30px 0;
+        line-height: 1.4;
+        h2 {
+            text-align: center;
+        }
+        ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            line-height: 1.2;
+        }
+        li{
+            margin: 0;
+            padding: 0 0 .25em;
+            text-indent: 0;
+            line-height: 1.5em;
+        }
+    }
+    #welcom_text{
+        margin-top: 0;
+    }
+    #login_form{
+        input {
+            margin-bottom: 10px;
+            text-align: left;
+            font: 400 10px Open Sans, sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 0 0 8px;
+            border-top: none;
+            border-left: none;
+            border-right: none;
+            border-bottom: 2px solid #e0e3e8;
+            width: 100%;
+        }
+        input[type=submit]{
+            background: #1a1a1a;
+            border: none;
+            color: #e0e3e8;
+            text-transform: uppercase;
+            font: 400 10px Open Sans, sans-serif;
+            letter-spacing: 2px;
+            cursor: pointer;
+            width: 100%;
+            padding: 8px;
+            margin: 9px 0 0;
+            text-align: left;
+        }
+    }
+    #categories{
+        li {
+            display: inline-block;
+            width: 49%;
+            float: left;
+            margin: 5px 0 0;
+            padding: 5px 0;
+            cursor: pointer;
+            a{
+                color: #525252;
+                text-transform: uppercase;
+                font: 400 10px Open Sans, sans-serif;
             }
-            td:first-child, th:first-child{
-                width: 30%;
-                min-width: 100px;
+        }
+    }
+    #search{
+        #searchthis {
+            border-bottom: 2px solid #e0e3e8;
+            width: 98.7%;
+            .search-box {
+                width: 88%;
+                padding: 15px 0;
+                font: 400 10px Open Sans, sans-serif;
+                border: none;
+                color: #525252;
                 text-align: left;
             }
-        }
-        tr:nth-child(odd){
-            background-color: #66afe9;
-        }
-    }
-}
-
-.team-page{
-    .title-table{
-        display: block;
-        margin: 0;
-        background-color: #2b669a;
-        color: white;
-        font-size: 20px;
-        padding: 10px 20px;
-        width: 100%;
-    }
-    .team{
-        padding: 20px;
-        li{
-            list-style: none;
-        }
-    }
-}
-.team-page{
-    .team{
-        border: 1px solid #66afe9;
-        padding: 0;
-        li{
-            list-style: none;
-            padding: 10px 20px;
-            a{
-                color: black;
-            }
-            a:hover{
-                text-decoration: none;
-                color: #122b40;
+            .search-btn {
+                width: 10%;
+                font-family: FontAwesome;
+                background: transparent;
+                border: none;
+                border-radius: 0;
+                cursor: pointer;
+                color: #e0e3e8;
             }
         }
-        li:nth-child(odd){
-            background-color: #66afe9;
+    }
+    #PopularPosts{
+        .widget-content {
+            ul {
+                width: 100%;
+                li {
+                    padding: 0!important;
+                    display: block;
+                    margin-bottom: 25px;
+                    a {
+                        padding: 0;
+                        margin-bottom: 0;
+                        background: transparent;
+                    }
+                }
+            }
+        }
+        .popular-posts {
+            ul {
+                list-style: none;
+            }
+        }
+        .item-title {
+            text-align: center;
         }
     }
-}
-.player-page{
-    padding: 30px 0;
-    .foto-player{
-        background: url("../images/football_player.jpg") center top no-repeat;
-        width: 100%;
-        max-width: 256px;
-        height: 256px;
-        background-size: contain;
-    }
-    .player-info{
-        width: 100%;
-        max-width: 300px;
-        border: 1px solid #66afe9;
-        padding: 0;
-        li{
-            list-style: none;
-            padding: 10px 20px;
-
+    .PopularPosts {
+        .item-title {
+            padding-bottom: .2em;
+            a {
+                position: relative;
+                font: 400 10px Open Sans, sans-serif;
+                color: #1a1a1a;
+                font-size: 11px;
+                letter-spacing: 2px;
+                text-transform: uppercase;
+            }
         }
-        li:nth-child(odd){
-            background-color: #66afe9;
+        img {
+            padding: 0;
+            width: 100%;
+            height: auto;
         }
-    }
-}
-.trainer-page{
-    padding: 30px 0;
-    .foto-trainer{
-        background: url("../images/trainer.png") center top no-repeat;
-        width: 100%;
-        max-width: 256px;
-        height: 256px;
-        background-size: contain;
-    }
-    .trainer-info{
-        width: 100%;
-        max-width: 300px;
-        border: 1px solid #66afe9;
-        padding: 0;
-        li{
-            list-style: none;
-            padding: 10px 20px;
-
+        .widget-content {
+            ul {
+                li {
+                    padding: .7em 0;
+                }
+            }
         }
-        li:nth-child(odd){
-            background-color: #66afe9;
+        .item-thumbnail {
+            margin: 0;
+            float: left;
         }
     }
 }
 .footer{
-    background-color: #122b40;
-    .logo{
-        margin-top: 20px;
-        a{
-            display: block;
-            width: 60px;
-            height: 81px;
-            background: url("../images/logo.png") center top no-repeat;
+    width: 100%;
+    background: #1a1a1a;
+    padding: 50px 0;
+    text-align: center;
+    margin: 0 auto;
+    .bottom-credits {
+        margin: 0 auto;
+        color: #525252;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        padding: 0;
+        font: 400 10px Open Sans, sans-serif;
+        a {
+            color: #525252;
         }
-        float: left;
-    }
-    nav {
-        max-width: 500px;
-        width: 100%;
-        float: right;
-        padding: 15px 20px;
-        ul{
-            float: right;
-            li{
-                list-style: none;
-                display: inline-block;
-                float: left;
-                border: 1px solid white;
-                a{
-                    display: table-cell;
-                    vertical-align: middle;
-                    height: 42px;
-                    padding: 0 10px;
-                    color: white;
-                }
-            }
-            li:hover{
-                background: white;
-                a{
-                    color: #00b3ee;
-                    text-decoration: none;
-                }
-            }
-        }
-    }
-    .copyright{
-        display: block;
-        clear: both;
-        color: white;
     }
 }
