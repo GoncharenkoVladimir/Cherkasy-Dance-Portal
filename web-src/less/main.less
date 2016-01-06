@@ -30,6 +30,10 @@ a.go-top {
     margin: 0;
     text-transform: uppercase;
 }
+hr {
+    border: 1px solid #e0e3e8;
+    width: 50%;
+}
 header {
     //position: absolute;
     //top: 0;
@@ -101,6 +105,84 @@ header {
 .main-wrapper{
     border-top: 1px solid #1a1a1a;
     padding: 50px 0 0;
+    #SliderPopularPosts{
+        margin-top: 0;
+    }
+    #blog{
+        margin-bottom: 0;
+        padding: 0;
+        border: 0;
+        .count{
+            display: none;
+        }
+        .post {
+            float: none;
+            width: 100%;
+            margin: 0 0 50px;
+            padding: 0 0 50px;
+            border-bottom: 1px solid #1a1a1a;
+            .post-body {
+                font-size: 100%;
+                line-height: 1.9;
+                position: relative;
+                margin-top: 25px;
+                p {
+                    padding: 0;
+                }
+                hr {
+                    width: 50%;
+                }
+                .thumbs {
+                    float: left;
+                    max-width: 350px;
+                    margin-right: 25px;
+                }
+                .items-right {
+                    float: right;
+                    width: 350px;
+                    height: 300px;
+                    max-width: 100%;
+                    text-align: left;
+                    padding: 0;
+                    h3.post-title {
+                        padding: 0 0 15px;
+                        text-align: left;
+                        border-bottom: 2px solid #eeeeee;
+                        margin-bottom: 15px;
+                        font: 600 20px Open Sans, sans-serif;
+                        text-transform: uppercase;
+                        letter-spacing: 2px;
+                        color: #525252;
+                        a {
+                            color: #525252;
+                        }
+                    }
+                    h2.date-header {
+                        margin: 10px 0;
+                        border-bottom: none;
+                        font: 400 10px Open Sans, sans-serif;
+                    }
+                    p.excerpt {
+                        font: italic 14px PT Serif, serif;
+                        color: #525252;
+                    }
+                    .jump-link {
+                        margin: 15px auto;
+                        text-align: left;
+                        cursor: pointer;
+                        a {
+                            background: #1a1a1a;
+                            padding: 8px 5px;
+                            font: 400 10px Open Sans, sans-serif;
+                            text-transform: uppercase;
+                            color: #e0e3e8;
+                            letter-spacing: 2px;
+                        }
+                    }
+                }
+            }
+        }
+    }
     hr {
         width: 30%;
         border: 1px solid #e0e3e8;

@@ -11,7 +11,7 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="post")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\PostRepository")
  */
-class Post
+class Post implements \JsonSerializable
 {
     /**
      * @var int
@@ -306,5 +306,34 @@ class Post
     public function removeComment(Comment $comment)
     {
         $this->comments->removeElement($comment);
+    }
+
+    /**
+     * @return string
+     */
+    public function __toString() {
+        return (string) $this->getTitle();
+    }
+
+    /**
+     * Specify data which should be serialized to JSON
+     * @link http://php.net/manual/en/jsonserializable.jsonserialize.php
+     * @return mixed data which can be serialized by <b>json_encode</b>,
+     * which is a value of any type other than a resource.
+     * @since 5.4.0
+     */
+    function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'title' => $this->getTitle(),
+            'content' => $this->getContent(),
+            'tags' => $this->getTags(),
+            'status' => $this->getStatus(),
+            'createTime' => $this->getCreateTime(),
+            'updateTime' => $this->getUpdateTime(),
+            'author' => $this->getAuthor(),
+            'comments' => $this->getComments()
+        ];
     }
 }
