@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Gedmo\Mapping\Annotation as Gedmo;
 
 /**
  * Post
@@ -72,10 +73,17 @@ class Post implements \JsonSerializable
      */
     private $comments;
 
+    /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(length=128, unique=true)
+     */
+    private $slug;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->tags = new ArrayCollection();
+        $this->slug = $this->getSlug();
     }
 
     /**
@@ -314,6 +322,15 @@ class Post implements \JsonSerializable
     public function __toString() {
         return (string) $this->getTitle();
     }
+
+    /**
+     * @return string
+     */
+    public function getSlug()
+    {
+        return $this->slug;
+    }
+
 
     /**
      * Specify data which should be serialized to JSON
