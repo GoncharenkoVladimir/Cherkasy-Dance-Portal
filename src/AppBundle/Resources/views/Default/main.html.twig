@@ -41,49 +41,50 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="main section" id="main">
-                        <div class="widget SliderPopularPosts" id="SliderPopularPosts">
-                            <div class="widget-content">
-                                <div id="slider_post">
+                        {% block maincontent %}
+                            <div class="widget SliderPopularPosts" id="SliderPopularPosts">
+                                <div class="widget-content">
+                                    <div id="slider_post">
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="widget blog" id="blog">
-                            <div class="blog-posts hfeed">
-                                <div class="date-outer">
-                                    <div class="date-posts">
-                                        <div class="post-outer">
-                                            <div class="count">
-                                                {{ posts.getTotalItemCount }}
-                                            </div>
-                                            {% for value in posts %}
-                                                <div class="post hentry">
-                                                    <div class="post-body entry-content" id="">
-                                                        <div class="thumbs">
-                                                            <a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html" style="margin: 0px;">
-                                                                <img src="http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s370-c/keyboard-old-typewriter-3319.jpg" alt="Wypas cookie caramels soufflé caramels cookie ">
-                                                            </a>
-                                                        </div>
-                                                        <div class="items-right">
-                                                            <h3 class="post-title entry-title" itemprop="name">
-                                                                <a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html">{{ value.title }}</a>
-                                                            </h3>
-                                                            <h2 class="date-header"><span>{#{{ value.createTime }}#}</span></h2>
-                                                            <p class="excerpt">  {{ value.content }}</p>
-                                                            <div class="jump-link">
-                                                                <a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html#more">Continue Reading<i class="fa fa-caret-right"></i></a>
-                                                            </div>
-                                                        </div>
-                                                        <div style="clear: both;"></div>
-                                                    </div>
+                            <div class="widget blog" id="blog">
+                                <div class="blog-posts hfeed">
+                                    <div class="date-outer">
+                                        <div class="date-posts">
+                                            <div class="post-outer">
+                                                <div class="count">
+                                                    {{ posts.getTotalItemCount }}
                                                 </div>
-                                            {% endfor %}
-
+                                                {% for value in posts %}
+                                                    <div class="post hentry">
+                                                        <div class="post-body entry-content" id="">
+                                                            <div class="thumbs">
+                                                                <a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html" style="margin: 0px;">
+                                                                    <img src="http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s370-c/keyboard-old-typewriter-3319.jpg" alt="Wypas cookie caramels soufflé caramels cookie ">
+                                                                </a>
+                                                            </div>
+                                                            <div class="items-right">
+                                                                <h3 class="post-title entry-title" itemprop="name">
+                                                                    <a href="{{ path('post', {'slug': value.slug}) }}">{{ value.title }}</a>
+                                                                </h3>
+                                                                <h2 class="date-header"><span>{#{{ value.createTime }}#}</span></h2>
+                                                                <p class="excerpt">  {{ value.content }}</p>
+                                                                <div class="jump-link">
+                                                                    <a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html#more">Continue Reading<i class="fa fa-caret-right"></i></a>
+                                                                </div>
+                                                            </div>
+                                                            <div style="clear: both;"></div>
+                                                        </div>
+                                                    </div>
+                                                {% endfor %}
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        {% endblock maincontent %}
                     </div>
                 </div>
                 <div class="col-lg-4">

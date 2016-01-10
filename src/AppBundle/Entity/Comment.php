@@ -164,6 +164,8 @@ class Comment
 
     /**
      * Get author
+     *
+     * @return User
      */
     public function getAuthor()
     {

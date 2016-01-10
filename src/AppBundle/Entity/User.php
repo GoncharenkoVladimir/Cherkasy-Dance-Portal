@@ -53,7 +53,7 @@ class User
     /**
      *@ORM\OneToMany(targetEntity="Post", mappedBy="author")
      */
-    private $post;
+    private $posts;
 
     /** @ORM\OneToMany(targetEntity="Comment", mappedBy="author")
      *
@@ -62,7 +62,8 @@ class User
 
     public function __construct()
     {
-        $this->post = new ArrayCollection();
+        $this->posts = new ArrayCollection();
+        $this->comments = new ArrayCollection();
     }
 
     /**
@@ -172,11 +173,21 @@ class User
     }
 
     /**
-     * @return Post
+     * Remove post
+     *
+     * @param Post $post
      */
-    public function getPost()
+    public function removePost(Post $post)
     {
-        return $this->post;
+        $this->posts->removeElement($post);
+    }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getPosts()
+    {
+        return $this->posts;
     }
 
     /**
@@ -186,7 +197,7 @@ class User
      */
     public function addPost($post)
     {
-        $this->post[] = $post;
+        $this->posts[] = $post;
         if ($post) {
             $post->setAuthor($this);
         }
@@ -195,7 +206,34 @@ class User
     }
 
     /**
-     * @return Comment
+     * Add comment
+     *
+     * @param Comment $comment
+     *
+     * @return User
+     */
+    public function addComment(Comment $comment)
+    {
+        if($comment){
+            $comment->setAuthor($this);
+        }
+        $this->comments[] = $comment;
+
+        return $this;
+    }
+
+    /**
+     * Remove comment
+     *
+     * @param Comment $comment
+     */
+    public function removeComment(Comment $comment)
+    {
+        $this->comments->removeElement($comment);
+    }
+
+    /**
+     * @return ArrayCollection
      */
     public function getComments()
     {
@@ -203,18 +241,10 @@ class User
     }
 
     /**
-     * @param Comment $comments
-     *
-     * @return User
+     * @return string
      */
-    public function addComments($comments)
-    {
-        $this->comments[] = $comments;
-        if ($comments) {
-            $comments->setAuthor($this);
-        }
-
-        return $this;
+    public function __toString() {
+        return (string) $this->getUsername();
     }
 }
 

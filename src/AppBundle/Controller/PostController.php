@@ -5,7 +5,6 @@ namespace AppBundle\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\HttpFoundation\Request;
 use AppBundle\Entity\Post;
 
 class PostController extends Controller
@@ -18,7 +17,9 @@ class PostController extends Controller
      */
     public function postAction($slug)
     {
+        $post = $this->getDoctrine()->getRepository('AppBundle:Post')->findOneBySlug($slug);
+        $comments = $this->getDoctrine()->getRepository('AppBundle:Comment')->findByPost($post->getId());
 
-        return [];
+        return ['post' => $post, 'comments' => $comments];
     }
 }

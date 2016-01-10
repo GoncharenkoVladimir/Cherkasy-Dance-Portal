@@ -2,12 +2,59 @@
 
 {% block title %}Post{% endblock %}
 
-{% block content %}
-    <div class="content">
-        <div class="container">
+{% block maincontent %}
+<div class="widget blog" id="blog">
+    <div class="blog-posts hfeed">
+        <div class="date-outer">
+            <div class="date-posts">
+                <div class="post-outer">
+                    <div class="post hentry">
+                        <div class="post-header">
+                            <h3 class="post-title entry-title">
+                                {{ post.title }}
+                            </h3><hr>
+                        </div>
+                        <div class="date_post">
+                            <span class="post-date">
+                                <i class="fa fa-calendar"></i>
+                                <span class="date">{#{{ post.updateTime }}#}</span>
+                            </span>
+                        </div>
+                        <div class="post-body entry-content" id="{{ post.slug }}">
+                            <div class="separator">
+                                <img border="0" src="http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s1600/keyboard-old-typewriter-3319.jpg">
+                            </div>
+                            <div class="post-content">
+                                {{ post.content }}
+                            </div>
+                        </div>
+                        <div class="post-footer" style="clear: both;">
 
+                        </div>
+                    </div>
+                    <div class="comments" id="comments">
+                        <h3>{{ comments|length }} Comments</h3>
+                        <ul class="comments-list">
+                            {% for value in comments %}
+                                <li>
+                                    <div class="avatar-image-container">
+                                        <img src="https://img1.blogblog.com/img/anon36.png">
+                                    </div>
+                                    <div class="comment-block">
+                                        <span class="name-user">{{ value.author }}</span>
+                                        <div class="content-comments">
+                                            {{ value.content }}
+                                        </div>
+                                    </div>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-{% endblock content %}
+</div>
+{% endblock maincontent %}
 
 {% block titlepage %}<h3 class="text-center"></h3>{% endblock titlepage %}

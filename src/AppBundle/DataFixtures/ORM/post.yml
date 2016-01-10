@@ -6,3 +6,4 @@ AppBundle\Entity\Post:
         createTime: <dateTime($max = 'now')>
         updateTime: <dateTime($max = 'now')>
         tags: <numberBetween(1, 5)>x @tag*
+        comments: <numberBetween(1, 2)>x @comment*

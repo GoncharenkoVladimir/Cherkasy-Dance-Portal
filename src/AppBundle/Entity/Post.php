@@ -64,7 +64,7 @@ class Post implements \JsonSerializable
     private $updateTime;
 
     /**
-     * @ORM\ManyToOne(targetEntity="User", inversedBy="post")
+     * @ORM\ManyToOne(targetEntity="User", inversedBy="posts")
      */
     private $author;
 
@@ -235,29 +235,6 @@ class Post implements \JsonSerializable
     }
 
     /**
-     * @return array
-     */
-    public function getComments()
-    {
-        return $this->comments;
-    }
-
-    /**
-     * @param Comment $comment
-     *
-     * @return array
-     */
-    public function addComments($comment)
-    {
-        $this->comments[] = $comment;
-        if ($comment) {
-            $comment->setPost($this);
-        }
-
-        return $this;
-    }
-
-    /**
      * Add tag
      *
      * @param Tag $tag
@@ -301,6 +278,9 @@ class Post implements \JsonSerializable
      */
     public function addComment(Comment $comment)
     {
+        if($comment){
+            $comment->setPost($this);
+        }
         $this->comments[] = $comment;
 
         return $this;
@@ -315,6 +295,15 @@ class Post implements \JsonSerializable
     {
         $this->comments->removeElement($comment);
     }
+
+    /**
+     * @return ArrayCollection
+     */
+    public function getComments()
+    {
+        return $this->comments;
+    }
+
 
     /**
      * @return string
