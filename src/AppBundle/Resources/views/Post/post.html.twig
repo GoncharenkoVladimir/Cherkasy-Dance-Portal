@@ -17,7 +17,7 @@
                         <div class="date_post">
                             <span class="post-date">
                                 <i class="fa fa-calendar"></i>
-                                <span class="date">{#{{ post.updateTime }}#}</span>
+                                <span class="date">{{ post.updateTime|date }}</span>
                             </span>
                         </div>
                         <div class="post-body entry-content" id="{{ post.slug }}">

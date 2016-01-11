@@ -108,4 +108,11 @@ class Tag
     {
         return $this->posts;
     }
+
+    /**
+     * @return string
+     */
+    public function __toString() {
+        return (string) $this->getName();
+    }
 }

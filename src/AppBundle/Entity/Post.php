@@ -336,7 +336,7 @@ class Post implements \JsonSerializable
             'content' => $this->getContent(),
             'tags' => $this->getTags(),
             'status' => $this->getStatus(),
-            'createTime' => $this->getCreateTime(),
+            'createTime' => $this->getCreateTime()->format('F d, o H:i'),
             'updateTime' => $this->getUpdateTime(),
             'author' => $this->getAuthor(),
             'comments' => $this->getComments()

@@ -21,8 +21,9 @@ $(document).ready(function(){
                             "<img src=\"http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s370-c/keyboard-old-typewriter-3319.jpg\" alt=\"Wypas cookie caramels soufflé caramels cookie \">" +
                             "</a></div>" +
                             "<div class=\"items-right\">" +
-                            "<h3 class=\"post-title entry-title\" itemprop=\"name\">" +
+                            "<h3 class=\"post-title entry-title\">" +
                             "<a href=\"http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html\">" + json.posts[i].title + "</a></h3>" +
+                            "<h2 class=\"date-header\"><span>" + json.posts[i].createTime + "</span></h2>" +
                             "<p class=\"excerpt\">" + json.posts[i].content + "</p>" +
                             "<div class=\"jump-link\">" +
                             "<a href=\"http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html#more\">Continue Reading<i class=\"fa fa-caret-right\"></i></a></div>" +

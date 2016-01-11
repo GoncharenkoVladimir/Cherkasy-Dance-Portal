@@ -3,9 +3,18 @@
 {% block title %}Admin panel!!!{% endblock %}
 
 {% block content %}
-    <div class="content">
-        <div class="container">
-
+    <div class="content" id="admin-panel">
+        <div class="control-panel">
+            <ul class="list-item-control-panel">
+                <li><a href="{{ path('admin-posts') }}">Posts</a></li>
+                <li>Users</li>
+                <li>Tags</li>
+                <li>Comments</li>
+            </ul>
+        </div>
+        <div class="content-admin">
+            {% block contentAdmin %}
+            {% endblock contentAdmin %}
         </div>
     </div>
 {% endblock content %}

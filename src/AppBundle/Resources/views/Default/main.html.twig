@@ -69,10 +69,10 @@
                                                                 <h3 class="post-title entry-title" itemprop="name">
                                                                     <a href="{{ path('post', {'slug': value.slug}) }}">{{ value.title }}</a>
                                                                 </h3>
-                                                                <h2 class="date-header"><span>{#{{ value.createTime }}#}</span></h2>
+                                                                <h2 class="date-header"><span>{{ value.createTime|date }}</span></h2>
                                                                 <p class="excerpt">  {{ value.content }}</p>
                                                                 <div class="jump-link">
-                                                                    <a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html#more">Continue Reading<i class="fa fa-caret-right"></i></a>
+                                                                    <a href="{{ path('post', {'slug': value.slug}) }}">Continue Reading<i class="fa fa-caret-right"></i></a>
                                                                 </div>
                                                             </div>
                                                             <div style="clear: both;"></div>

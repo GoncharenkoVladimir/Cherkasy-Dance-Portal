@@ -386,3 +386,65 @@ header {
         }
     }
 }
+
+/*---------------------------------------------Admin Panel------------------------------------------------------------*/
+
+#admin-panel{
+    overflow: hidden;
+    .control-panel{
+        width: 200px;
+        background-color: #1a1a1a;
+        padding: 20px 15px;
+        display: inline-block;
+        float: left;
+        .list-item-control-panel{
+            padding: 0;
+            margin: 0;
+            li{
+                min-height: 30px;
+                padding: 5px 10px;
+                font: 300 18px 'Raleway',Arial,serif;
+                color: white;
+                list-style: none;
+            }
+        }
+    }
+    .content-admin{
+        display: inline-block;
+        float: left;
+        table{
+            width: 100%;
+            thead{
+                background-color: #535353;
+                color: white;
+                font: 300 16px 'Raleway',Arial,serif;
+            }
+            tr{
+                height: 30px;
+                td{
+                    padding: 5px 10px;
+                }
+                th{
+                    padding: 5px 10px;
+                }
+                td.name{
+                    width: 400px;
+                }
+                td.date{
+                    width: 115px;
+                }
+                td.tags{
+                    width: 150px;
+                }
+            }
+            tbody{
+                tr:nth-child(odd){
+                    background-color: #898989;
+                }
+                tr:nth-child(even){
+                    background-color: white;
+                }
+            }
+        }
+    }
+}
