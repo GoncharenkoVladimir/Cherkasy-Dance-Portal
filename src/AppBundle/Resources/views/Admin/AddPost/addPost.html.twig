@@ -1,0 +1,58 @@
+{% extends '@App/Admin/Admin/administrator.html.twig' %}
+
+{% block contentAdmin %}
+    <div class="block_add_post">
+        <h1>Add new post!</h1>
+        {{ form(form) }}
+    </div>
+{% endblock contentAdmin %}
+
+{% block javascripts %}
+    <script>
+        jQuery(document).ready(function(){
+            var urlHolder = jQuery('#add_post_tags'),
+                    addURL = jQuery('<span class="add_url glyphicon-plus">Add tag</span>'),
+                    newItem = jQuery('<div class="col-xs-12 form-group add_post"></div>').append(addURL);
+            urlHolder.append(newItem);
+            urlHolder.data('index', urlHolder.find(':input').length);
+            urlHolder.children().each(function () {
+                var deleteX = jQuery('<a href="#" class="remove-tag"><i class="glyphicon glyphicon-remove-circle"></i></a>');
+                var parentEl = jQuery(this);
+                if (!parentEl.hasClass('add_post')) {
+                    parentEl.append(deleteX);
+                }
+            });
+            // handle the removal, just for this example
+            jQuery('.remove-tag').click(function (e) {
+                e.preventDefault();
+                jQuery(this).parent().remove();
+                return false;
+            });
+            addURL.on('click', function (e) {
+                e.preventDefault();
+                addTagForm(urlHolder, newItem);
+            });
+            function addTagForm($collectionHolder, $newLinkLi) {
+                // Get the data-prototype explained earlier
+                var prototype = $collectionHolder.data('prototype');
+                // get the new index
+                var index = $collectionHolder.data('index');
+                // Replace '$$name$$' in the prototype's HTML to
+                // instead be a number based on how many items we have
+                var newForm = jQuery(prototype.replace(/__name__label__/g, '').replace(/__name__/g, index));
+                // increase the index with one for the next item
+                $collectionHolder.data('index', index + 1);
+                // Display the form in the page in an li, before the "Add a tag" link li
+                newForm.insertBefore($collectionHolder.children().last());
+                // also add a remove button, just for this example
+                newForm.append('<a href="#" class="remove-tag"><i class="glyphicon glyphicon-remove-circle"></i></a>');
+                // handle the removal, just for this example
+                jQuery('.remove-tag').click(function(e) {
+                    e.preventDefault();
+                    jQuery(this).parent().remove();
+                    return false;
+                });
+            }
+        })
+    </script>
+{% endblock javascripts %}

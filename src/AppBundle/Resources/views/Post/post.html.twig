@@ -41,7 +41,14 @@
                                         <img src="https://img1.blogblog.com/img/anon36.png">
                                     </div>
                                     <div class="comment-block">
-                                        <span class="name-user">{{ value.author }}</span>
+                                        <span class="name-user">
+                                            {% if value.author %}
+                                                {{ value.author }}
+                                            {% else %}
+                                                NONE
+                                            {% endif %}
+
+                                        </span>
                                         <div class="content-comments">
                                             {{ value.content }}
                                         </div>

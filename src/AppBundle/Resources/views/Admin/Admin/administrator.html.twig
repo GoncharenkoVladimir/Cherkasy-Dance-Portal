@@ -6,7 +6,14 @@
     <div class="content" id="admin-panel">
         <div class="control-panel">
             <ul class="list-item-control-panel">
-                <li><a href="{{ path('admin-posts') }}">Posts</a></li>
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">Posts<span class="caret"></span></a>
+
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ path('admin-posts') }}">All posts</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ path('add-post') }}">Add post</a></li>
+                    </ul>
+                </li>
                 <li>Users</li>
                 <li>Tags</li>
                 <li>Comments</li>
