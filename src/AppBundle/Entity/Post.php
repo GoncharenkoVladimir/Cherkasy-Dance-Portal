@@ -39,7 +39,7 @@ class Post implements \JsonSerializable
     private $content;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Tag",  mappedBy="posts")
+     * @ORM\ManyToMany(targetEntity="Tag",  mappedBy="posts", cascade={"persist"})
      */
     private $tags;
 
@@ -54,6 +54,7 @@ class Post implements \JsonSerializable
      * @var \DateTime
      *
      * @ORM\Column(name="createTime", type="datetime")
+     * @Gedmo\Timestampable(on="create")
      */
     private $createTime;
 
@@ -61,6 +62,7 @@ class Post implements \JsonSerializable
      * @var \DateTime
      *
      * @ORM\Column(name="updateTime", type="datetime")
+     * @Gedmo\Timestampable(on="update")
      */
     private $updateTime;
 
@@ -80,12 +82,12 @@ class Post implements \JsonSerializable
      */
     private $slug;
 
-    public function __construct($user)
+    public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->slug = $this->getSlug();
-        $this->author = $user;
+        $this->status = $this->setStatus('published');
     }
 
     /**
