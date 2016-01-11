@@ -87,7 +87,6 @@ class Post implements \JsonSerializable
         $this->comments = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->slug = $this->getSlug();
-        $this->status = $this->setStatus('published');
     }
 
     /**

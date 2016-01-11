@@ -22,6 +22,7 @@ class AddPostController extends Controller
         $user = $this->getDoctrine()->getRepository('AppBundle:User')->find(84);
         $post = new Post();
         $post->setAuthor($user);
+        $post->setStatus('published');
         $form = $this->createForm(AddPost::class, $post);
         $form->handleRequest($request);
 
@@ -29,6 +30,7 @@ class AddPostController extends Controller
             if ($form->isValid()) {
                 $em->persist($post);
                 $em->flush();
+                return $this->redirect($this->generateUrl('admin-posts', array('post' => $post)));
             }
         }
         return ['form' => $form->createView()];

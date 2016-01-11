@@ -36,8 +36,8 @@
                     {{ value.comments|length }}
                 </td>
                 <td>
-                    <span class="btn btn-warning"><a href="">Edit</a></span>
-                    <span class="btn btn-danger"><a href="">Remove</a></span>
+                    <span class="btn btn-warning"><a href="{{ path('edit-post', { 'id': value.id }) }}">Edit</a></span>
+                    <span class="btn btn-danger"><a href="{{ path('delete-post', { 'id': value.id }) }}">Remove</a></span>
                 </td>
             </tr>
         {% endfor %}
