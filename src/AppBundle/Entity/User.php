@@ -51,11 +51,11 @@ class User
     private $profile;
 
     /**
-     *@ORM\OneToMany(targetEntity="Post", mappedBy="author")
+     *@ORM\OneToMany(targetEntity="Post", mappedBy="author", cascade={"remove"})
      */
     private $posts;
 
-    /** @ORM\OneToMany(targetEntity="Comment", mappedBy="author")
+    /** @ORM\OneToMany(targetEntity="Comment", mappedBy="author", cascade={"remove"})
      *
      */
     private $comments;
