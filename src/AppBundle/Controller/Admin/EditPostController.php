@@ -17,11 +17,22 @@ class EditPostController extends Controller
      * @param $id
      * @return array
      */
-    public function editPostAction($id)
+    public function editPostAction(Request $request, $id)
     {
-        $repository = $this->getDoctrine()->getManager()->getRepository('AppBundle:Post');
-        $post = $repository->find($id);
+        $post = $this->getDoctrine()->getManager()->getRepository('AppBundle:Post')->find($id);
 
-        return ['posts' => $post];
+        $form = $this->createForm(AddPost::class, $post);
+
+        $form->handleRequest($request);
+        if($request->getMethod() == Request::METHOD_POST) {
+            if ($form->isValid()) {
+                $this->getDoctrine()->getManager()->flush();
+            }
+        }
+
+        return [
+            'post' => $post,
+            'form' => $form->createView()
+        ];
     }
 }
