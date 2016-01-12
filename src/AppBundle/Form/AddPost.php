@@ -18,11 +18,7 @@ class AddPost extends AbstractType
         $builder
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
-            ->add('tags', CollectionType::class, [
-                'entry_type'   => new TagChoice(),
-                'allow_add' => true,
-                'allow_delete' => true
-            ])
+            ->add('tag_list', TextType::class)
             ->add('submit', SubmitType::class)
             ->setMethod('POST')
         ;

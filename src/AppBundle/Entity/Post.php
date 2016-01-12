@@ -82,6 +82,8 @@ class Post implements \JsonSerializable
      */
     private $slug;
 
+    private $tagList;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
@@ -259,6 +261,7 @@ class Post implements \JsonSerializable
      */
     public function removeTag(Tag $tag)
     {
+        $tag->removePost($this);
         $this->tags->removeElement($tag);
     }
 
@@ -321,6 +324,22 @@ class Post implements \JsonSerializable
     public function getSlug()
     {
         return $this->slug;
+    }
+
+    /**
+     * @return mixed
+     */
+    public function getTagList()
+    {
+        return $this->tagList;
+    }
+
+    /**
+     * @param mixed $tagList
+     */
+    public function setTagList($tagList)
+    {
+        $this->tagList = $tagList;
     }
 
 

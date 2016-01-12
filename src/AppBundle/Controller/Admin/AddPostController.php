@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller\Admin;
 
+use AppBundle\Entity\Tag;
 use AppBundle\Form\AddPost;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -28,6 +29,17 @@ class AddPostController extends Controller
 
         if($request->getMethod() == Request::METHOD_POST){
             if ($form->isValid()) {
+                $arrayTags = explode(",", $post->getTagList());
+                foreach ($arrayTags as $value){
+                    $tag = $this->getDoctrine()->getRepository('AppBundle:Tag')->findOneByName($value);
+                    if ($tag){
+                        $post->addTag($tag);
+                    }else{
+                        $newTag = new Tag();
+                        $newTag->setName($value);
+                        $post->addTag($newTag);
+                    }
+                }
                 $em->persist($post);
                 $em->flush();
                 return $this->redirect($this->generateUrl('admin-posts', array('post' => $post)));
