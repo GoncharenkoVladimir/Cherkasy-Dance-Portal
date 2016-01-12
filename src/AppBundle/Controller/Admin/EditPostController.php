@@ -23,8 +23,6 @@ class EditPostController extends Controller
     {
         $valMas = [];
         $post = $this->getDoctrine()->getManager()->getRepository('AppBundle:Post')->find($id);
-
-
         $arrayTagsFromPost = $post->getTags()->getValues();
 
         /**
@@ -64,7 +62,6 @@ class EditPostController extends Controller
                     }
                 }
 
-                $arrayTagsFromPost2 = $post->getTags()->getValues();
                 $this->getDoctrine()->getManager()->flush();
                 return $this->redirect($this->generateUrl('admin-posts', array('post' => $post)));
             }
