@@ -63,18 +63,18 @@
                                                     <div class="post hentry">
                                                         <div class="post-body entry-content" id="">
                                                             <div class="thumbs">
-                                                                <a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html" style="margin: 0px;">
+                                                                <a href="{{ path('post_view', {'slug': value.slug }) }}" style="margin: 0px;">
                                                                     <img src="http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s370-c/keyboard-old-typewriter-3319.jpg" alt="Wypas cookie caramels soufflé caramels cookie ">
                                                                 </a>
                                                             </div>
                                                             <div class="items-right">
                                                                 <h3 class="post-title entry-title">
-                                                                    <a href="{{ path('post', {'slug': value.slug}) }}">{{ value.title }}</a>
+                                                                    <a href="{{ path('post_view', {'slug': value.slug}) }}">{{ value.title }}</a>
                                                                 </h3>
                                                                 <h2 class="date-header"><span>{{ value.createTime|date }}</span></h2>
                                                                 <p class="excerpt">  {{ value.content }}</p>
                                                                 <div class="jump-link">
-                                                                    <a href="{{ path('post', {'slug': value.slug}) }}">Continue Reading<i class="fa fa-caret-right"></i></a>
+                                                                    <a href="{{ path('post_view', {'slug': value.slug}) }}">Continue Reading<i class="fa fa-caret-right"></i></a>
                                                                 </div>
                                                             </div>
                                                             <div style="clear: both;"></div>

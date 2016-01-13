@@ -13,13 +13,16 @@ use AppBundle\Entity\Post;
 class PostController extends Controller
 {
     /**
-     * @Route("/post/{slug}", name="post")
+     * @Route("/post/{slug}", name="post_view")
      * @param string $slug
      * @Template()
      * @return array
      */
     public function postAction($slug, Request$request )
     {
+        /**
+         * @var Post $post
+         */
         $post = $this->getDoctrine()->getRepository('AppBundle:Post')->findOneBySlug($slug);
         $comments = $this->getDoctrine()->getRepository('AppBundle:Comment')->findByPost($post->getId());
 
@@ -41,10 +44,8 @@ class PostController extends Controller
                 $em->persist($commentAdd);
                 $em->flush();
 
-                /**
-                 * @var Post $post
-                 */
-                return $this->redirect($this->generateUrl('post', array('post' => $post)));
+
+                return $this->redirect($this->generateUrl('post_view', array('slug' => $post->getSlug())));
             }
         }
 

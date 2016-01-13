@@ -17,23 +17,22 @@ $(document).ready(function(){
                     for (var i in json.posts) {
                         $('.post-outer').html($('.post-outer').html() +
                             "<div class=\"post hentry\"><div class=\"post-body entry-content\" id=\"\"><div class=\"thumbs\">" +
-                            "<a href=\"http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html\">"+
+                            "<a href=\"post/"+ json.posts[i].slug +"\">"+
                             "<img src=\"http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s370-c/keyboard-old-typewriter-3319.jpg\" alt=\"Wypas cookie caramels soufflé caramels cookie \">" +
                             "</a></div>" +
                             "<div class=\"items-right\">" +
                             "<h3 class=\"post-title entry-title\">" +
-                            "<a href=\"http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html\">" + json.posts[i].title + "</a></h3>" +
+                            "<a href=\"post/"+ json.posts[i].slug +"\">" + json.posts[i].title + "</a></h3>" +
                             "<h2 class=\"date-header\"><span>" + json.posts[i].createTime + "</span></h2>" +
                             "<p class=\"excerpt\">" + json.posts[i].content + "</p>" +
                             "<div class=\"jump-link\">" +
-                            "<a href=\"http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html#more\">Continue Reading<i class=\"fa fa-caret-right\"></i></a></div>" +
+                            "<a href=\"post/"+ json.posts[i].slug +"\">Continue Reading<i class=\"fa fa-caret-right\"></i></a></div>" +
                             "</div><div style=\"clear: both;\"></div></div></div>");
                     }
                 }, 'json');
             }
         }
     });
-
     var heightSideBar = $('#admin-panel').height();
     $('#admin-panel .control-panel').height(heightSideBar);
 

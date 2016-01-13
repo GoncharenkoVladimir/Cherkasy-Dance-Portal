@@ -360,7 +360,8 @@ class Post implements \JsonSerializable
             'createTime' => $this->getCreateTime()->format('F d, o H:i'),
             'updateTime' => $this->getUpdateTime(),
             'author' => $this->getAuthor(),
-            'comments' => $this->getComments()
+            'comments' => $this->getComments(),
+            'slug' => $this->getSlug()
         ];
     }
 }
