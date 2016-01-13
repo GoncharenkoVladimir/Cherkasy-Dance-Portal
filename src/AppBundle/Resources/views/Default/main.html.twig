@@ -120,30 +120,11 @@
                             <h2>CATEGORIES</h2><hr>
                             <div class="widget-content categories-widget-content">
                                 <ul>
-                                    <li>
-                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Books">Books</a>
-                                    </li>
-                                    <li>
-                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/DIY">DIY</a>
-                                    </li>
-                                    <li>
-                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Events">Events</a>
-                                    </li>
-                                    <li>
-                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Fashion">Fashion</a>
-                                    </li>
-                                    <li>
-                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Food">Food</a>
-                                    </li>
-                                    <li>
-                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Lifestyle">Lifestyle</a>
-                                    </li>
-                                    <li>
-                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Movies">Movies</a>
-                                    </li>
-                                    <li>
-                                        <a dir="ltr" href="http://asterism-mairagall.blogspot.com/search/label/Travel">Travel</a>
-                                    </li>
+                                    {% for value in tags %}
+                                        <li>
+                                            <a href="{{ path('homepage', {'tag': value.name}) }}">{{ value.name }}</a>
+                                        </li>
+                                    {% endfor %}
                                 </ul>
                                 <div class="clear"></div>
                             </div>
@@ -220,6 +201,42 @@
     {% endblock footer %}
 {% endblock %}
 {% block javascripts %}
+    <script>
+        $(document).ready(function(){
+            var page = 2;
+            var total = $('.count').text();
+            var itemsPerPage = 5;
+            $(window).scroll(function () {
+                if($(window).scrollTop() + $(window).height() == $(document).height()) {
+                    page++;
+                    if((page-1)* itemsPerPage > total) {
+                        $('#no-more').show();
+                        $('#more').hide();
+                    }else{
+                        $('#more').show();
+
+                        $.get("/app_dev.php/infinity-scroll/scroll/{{ tag }}", function(json) {
+                            for (var i in json.posts) {
+                                $('.post-outer').html($('.post-outer').html() +
+                                        "<div class=\"post hentry\"><div class=\"post-body entry-content\" id=\"\"><div class=\"thumbs\">" +
+                                        "<a href=\"post/"+ json.posts[i].slug +"\">"+
+                                        "<img src=\"http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s370-c/keyboard-old-typewriter-3319.jpg\" alt=\"Wypas cookie caramels soufflé caramels cookie \">" +
+                                        "</a></div>" +
+                                        "<div class=\"items-right\">" +
+                                        "<h3 class=\"post-title entry-title\">" +
+                                        "<a href=\"post/"+ json.posts[i].slug +"\">" + json.posts[i].title + "</a></h3>" +
+                                        "<h2 class=\"date-header\"><span>" + json.posts[i].createTime + "</span></h2>" +
+                                        "<p class=\"excerpt\">" + json.posts[i].content + "</p>" +
+                                        "<div class=\"jump-link\">" +
+                                        "<a href=\"post/"+ json.posts[i].slug +"\">Continue Reading<i class=\"fa fa-caret-right\"></i></a></div>" +
+                                        "</div><div style=\"clear: both;\"></div></div></div>");
+                            }
+                        }, 'json');
+                    }
+                }
+            });
+        });
+    </script>
 {% endblock %}
 <a class="go-top" href="#" style="display: inline;"><i class="fa fa-caret-up"></i></a>
 </body>
