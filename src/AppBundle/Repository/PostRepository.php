@@ -10,4 +10,12 @@ namespace AppBundle\Repository;
  */
 class PostRepository extends \Doctrine\ORM\EntityRepository
 {
+    function search($repo, $word){
+        $query = $repo->createQueryBuilder('p')
+            ->where('p.title LIKE :title')
+            ->setParameter('title', '%'.$word->getName().'%')
+            ->getQuery()->getResult();
+
+        return $query;
+    }
 }

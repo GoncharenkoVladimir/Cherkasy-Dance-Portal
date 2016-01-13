@@ -24,6 +24,7 @@ class PostController extends Controller
          * @var Post $post
          */
         $post = $this->getDoctrine()->getRepository('AppBundle:Post')->findOneBySlug($slug);
+        $tags = $this->getDoctrine()->getRepository('AppBundle:Tag')->findAll();
         $comments = $this->getDoctrine()->getRepository('AppBundle:Comment')->findByPost($post->getId());
 
         $em = $this->getDoctrine()->getManager();
@@ -49,6 +50,6 @@ class PostController extends Controller
             }
         }
 
-        return ['post' => $post, 'comments' => $comments, 'form' => $form->createView()];
+        return ['post' => $post, 'comments' => $comments, 'form_comment' => $form->createView(), 'tags' => $tags];
     }
 }

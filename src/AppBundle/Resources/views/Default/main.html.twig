@@ -129,18 +129,19 @@
                                 <div class="clear"></div>
                             </div>
                         </div>
+                        {% block search %}
+                            <div class="widget" id="search">
+                                <h2 class="title">SEARCH</h2><hr>
+                                <div class="widget-content">
+                                    <div id="searchthis">
+                                        {{ form_widget(form_search.name) }}
+                                        {{ form_end(form_search) }}
+                                    </div>
 
-                        <div class="widget" id="search">
-                            <h2 class="title">SEARCH</h2><hr>
-                            <div class="widget-content">
-                                <form action="" id="searchthis" method="get" style="display: inline-block;">
-                                    <input class="search-box" name="q" placeholder="KEYWORD + ENTER" size="33" type="text">
-                                    <input class="search-btn" type="submit" value="">
-                                </form>
+                                </div>
+                                <div class="clear"></div>
                             </div>
-                            <div class="clear"></div>
-                        </div>
-
+                        {% endblock search %}
                         <div class="widget PopularPosts" id="PopularPosts">
                             <h2>FEATURED</h2><hr>
                             <div class="widget-content popular-posts">
@@ -201,6 +202,8 @@
     {% endblock footer %}
 {% endblock %}
 {% block javascripts %}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {'callback': 'fos.Router.setData'}) }}"></script>
     <script>
         $(document).ready(function(){
             var page = 2;
@@ -215,7 +218,8 @@
                     }else{
                         $('#more').show();
 
-                        $.get("/app_dev.php/infinity-scroll/scroll/{{ tag }}", function(json) {
+                        {#$.get("/app_dev.php/infinity-scroll/scroll/{{ tag }}", function(json) {#}
+                        $.get(Routing.generate('infinity-scroll', { tag:"{{ tag }}" }, true), function(json) {
                             for (var i in json.posts) {
                                 $('.post-outer').html($('.post-outer').html() +
                                         "<div class=\"post hentry\"><div class=\"post-body entry-content\" id=\"\"><div class=\"thumbs\">" +

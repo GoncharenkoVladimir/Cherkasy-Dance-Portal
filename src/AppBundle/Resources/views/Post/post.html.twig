@@ -58,7 +58,7 @@
                                 {% endfor %}
                             </ul>
                             <div class="block-comment">
-                                {{ form(form) }}
+                                {{ form(form_comment) }}
                             </div>
                         </div>
                     {% endif %}
@@ -68,5 +68,9 @@
     </div>
 </div>
 {% endblock maincontent %}
+{% block search %}
+{% endblock search %}
+{% block javascripts %}
+{% endblock %}
 
 {% block titlepage %}<h3 class="text-center"></h3>{% endblock titlepage %}
