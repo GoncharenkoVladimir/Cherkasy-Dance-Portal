@@ -5,7 +5,6 @@ namespace AppBundle\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
 use Gedmo\Mapping\Annotation as Gedmo;
-use AppBundle\Entity\User;
 
 /**
  * Post
@@ -72,7 +71,7 @@ class Post implements \JsonSerializable
     private $author;
 
     /**
-     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post")
+     * @ORM\OneToMany(targetEntity="Comment", mappedBy="post", cascade={"persist", "remove"})
      */
     private $comments;
 

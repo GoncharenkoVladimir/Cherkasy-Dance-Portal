@@ -32,15 +32,16 @@
 
                         </div>
                     </div>
-                    <div class="comments" id="comments">
-                        <h3>{{ comments|length }} Comments</h3>
-                        <ul class="comments-list">
-                            {% for value in comments %}
-                                <li>
-                                    <div class="avatar-image-container">
-                                        <img src="https://img1.blogblog.com/img/anon36.png">
-                                    </div>
-                                    <div class="comment-block">
+                    {% if comments|length > 0 %}
+                        <div class="comments" id="comments">
+                            <h3>{{ comments|length }} Comments</h3>
+                            <ul class="comments-list">
+                                {% for value in comments %}
+                                    <li>
+                                        <div class="avatar-image-container">
+                                            <img src="https://img1.blogblog.com/img/anon36.png">
+                                        </div>
+                                        <div class="comment-block">
                                         <span class="name-user">
                                             {% if value.author %}
                                                 {{ value.author }}
@@ -49,14 +50,18 @@
                                             {% endif %}
 
                                         </span>
-                                        <div class="content-comments">
-                                            {{ value.content }}
+                                            <div class="content-comments">
+                                                {{ value.content }}
+                                            </div>
                                         </div>
-                                    </div>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                            <div class="block-comment">
+                                {{ form(form) }}
+                            </div>
+                        </div>
+                    {% endif %}
                 </div>
             </div>
         </div>
