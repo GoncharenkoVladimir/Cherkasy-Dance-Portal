@@ -64,7 +64,7 @@
                                                         <div class="post-body entry-content" id="">
                                                             <div class="thumbs">
                                                                 <a href="{{ path('post_view', {'slug': value.slug }) }}" style="margin: 0px;">
-                                                                    <img src="http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s370-c/keyboard-old-typewriter-3319.jpg" alt="Wypas cookie caramels soufflé caramels cookie ">
+                                                                    <img src="{{ value.getWebPath|imagine_filter('my_thumb') }}" alt="Wypas cookie caramels soufflé caramels cookie ">
                                                                 </a>
                                                             </div>
                                                             <div class="items-right">
@@ -89,102 +89,105 @@
                         {% endblock maincontent %}
                     </div>
                 </div>
-                <div class="col-lg-4">
-                    <aside>
-                        <div class="widget" id="welcom_text">
-                            <h2 class="title">WELCOME</h2><hr>
-                            <div class="widget-content">
-                                Asterism is a modern and responsive Blogger template, perfect for fashion and lifestyle blogs. Here you can add a welcome text.
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-
-                        <div class="widget" id="login_form">
-                            <h2 class="title">Sign Up</h2><hr>
-                            <div class="widget-content">
-                                <!-- Begin MailChimp Signup Form -->
-                                <div id="mc_embed_signup">
-                                    <form action="" method="post" id="mc-embedded-signup-form" name="" class="validate" novalidate="">
-                                        <div id="mc_embed_signup_scroll">
-                                            <p>Enter your e-mail and password!!!</p>
-                                        </div>
-                                    </form>
+                {% block sidebar %}
+                    <div class="col-lg-4">
+                        <aside>
+                            <div class="widget" id="welcom_text">
+                                <h2 class="title">WELCOME</h2><hr>
+                                <div class="widget-content">
+                                    Asterism is a modern and responsive Blogger template, perfect for fashion and lifestyle blogs. Here you can add a welcome text.
                                 </div>
-
-                                <!--End mc_embed_signup-->
-                            </div>
-                            <div class="clear"></div>
-                        </div>
-
-                        <div class="widget" id="categories">
-                            <h2>CATEGORIES</h2><hr>
-                            <div class="widget-content categories-widget-content">
-                                <ul>
-                                    {% for value in tags %}
-                                        <li>
-                                            <a href="{{ path('homepage', {'tag': value.name}) }}">{{ value.name }}</a>
-                                        </li>
-                                    {% endfor %}
-                                </ul>
                                 <div class="clear"></div>
                             </div>
-                        </div>
-                        {% block search %}
-                            <div class="widget" id="search">
-                                <h2 class="title">SEARCH</h2><hr>
+
+                            <div class="widget" id="login_form">
+                                <h2 class="title">Sign Up</h2><hr>
                                 <div class="widget-content">
-                                    <div id="searchthis">
-                                        {{ form_widget(form_search.name) }}
-                                        {{ form_end(form_search) }}
+                                    <!-- Begin MailChimp Signup Form -->
+                                    <div id="mc_embed_signup">
+                                        <form action="" method="post" id="mc-embedded-signup-form" name="" class="validate" novalidate="">
+                                            <div id="mc_embed_signup_scroll">
+                                                <p>Enter your e-mail and password!!!</p>
+                                            </div>
+                                        </form>
                                     </div>
 
+                                    <!--End mc_embed_signup-->
                                 </div>
                                 <div class="clear"></div>
                             </div>
-                        {% endblock search %}
-                        <div class="widget PopularPosts" id="PopularPosts">
-                            <h2>FEATURED</h2><hr>
-                            <div class="widget-content popular-posts">
-                                <ul>
-                                    <li>
-                                        <div class="item-thumbnail-only">
-                                            <div class="item-thumbnail">
-                                                <a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html" target="_blank">
-                                                    <img alt="" border="0" height="500" src="http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s500-c/keyboard-old-typewriter-3319.jpg" width="500">
-                                                </a>
-                                            </div>
-                                            <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html">Wypas cookie caramels soufflé caramels cookie </a></div>
-                                        </div>
-                                        <div style="clear: both;"></div>
-                                    </li>
-                                    <li>
-                                        <div class="item-thumbnail-only">
-                                            <div class="item-thumbnail">
-                                                <a href="http://asterism-mairagall.blogspot.com/2015/01/lollipop-dragee-carrot-cake.html" target="_blank">
-                                                    <img alt="" border="0" height="500" src="http://2.bp.blogspot.com/-lTmlQ2I0EKE/VQNeMx10mJI/AAAAAAAADgY/pqSbka6t0-Y/s500-c/DeathtoStock_Desk6.jpg" width="500">
-                                                </a>
-                                            </div>
-                                            <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/01/lollipop-dragee-carrot-cake.html">Lollipop dragée carrot cake</a></div>
-                                        </div>
-                                        <div style="clear: both;"></div>
-                                    </li>
-                                    <li>
-                                        <div class="item-thumbnail-only">
-                                            <div class="item-thumbnail">
-                                                <a href="http://asterism-mairagall.blogspot.com/2015/01/marzipan-sugar-plum-liquorice-roll.html" target="_blank">
-                                                    <img alt="" border="0" height="500" src="http://3.bp.blogspot.com/-OmZpsNGaFoo/VUDqAzHt8QI/AAAAAAAADt4/imVmE0UvOoU/s500-c/DeathtoStock3.jpg" width="500">
-                                                </a>
-                                            </div>
-                                            <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/01/marzipan-sugar-plum-liquorice-roll.html">Marzipan sugar plum liquorice roll.</a></div>
-                                        </div>
-                                        <div style="clear: both;"></div>
-                                    </li>
-                                </ul>
-                                <div class="clear"></div>
+
+                            <div class="widget" id="categories">
+                                <h2>CATEGORIES</h2><hr>
+                                <div class="widget-content categories-widget-content">
+                                    <ul>
+                                        {% for value in tags %}
+                                            <li>
+                                                <a href="{{ path('homepage', {'tag': value.name}) }}">{{ value.name }}</a>
+                                            </li>
+                                        {% endfor %}
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
                             </div>
-                        </div>
-                    </aside>
-                </div>
+                            {% block search %}
+                                <div class="widget" id="search">
+                                    <h2 class="title">SEARCH</h2><hr>
+                                    <div class="widget-content">
+                                        <div id="searchthis">
+                                            {{ form_widget(form_search.name) }}
+                                            {{ form_end(form_search) }}
+                                        </div>
+
+                                    </div>
+                                    <div class="clear"></div>
+                                </div>
+                            {% endblock search %}
+                            <div class="widget PopularPosts" id="PopularPosts">
+                                <h2>FEATURED</h2><hr>
+                                <div class="widget-content popular-posts">
+                                    <ul>
+                                        <li>
+                                            <div class="item-thumbnail-only">
+                                                <div class="item-thumbnail">
+                                                    <a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html" target="_blank">
+                                                        <img alt="" border="0" height="500" src="http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s500-c/keyboard-old-typewriter-3319.jpg" width="500">
+                                                    </a>
+                                                </div>
+                                                <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html">Wypas cookie caramels soufflé caramels cookie </a></div>
+                                            </div>
+                                            <div style="clear: both;"></div>
+                                        </li>
+                                        <li>
+                                            <div class="item-thumbnail-only">
+                                                <div class="item-thumbnail">
+                                                    <a href="http://asterism-mairagall.blogspot.com/2015/01/lollipop-dragee-carrot-cake.html" target="_blank">
+                                                        <img alt="" border="0" height="500" src="http://2.bp.blogspot.com/-lTmlQ2I0EKE/VQNeMx10mJI/AAAAAAAADgY/pqSbka6t0-Y/s500-c/DeathtoStock_Desk6.jpg" width="500">
+                                                    </a>
+                                                </div>
+                                                <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/01/lollipop-dragee-carrot-cake.html">Lollipop dragée carrot cake</a></div>
+                                            </div>
+                                            <div style="clear: both;"></div>
+                                        </li>
+                                        <li>
+                                            <div class="item-thumbnail-only">
+                                                <div class="item-thumbnail">
+                                                    <a href="http://asterism-mairagall.blogspot.com/2015/01/marzipan-sugar-plum-liquorice-roll.html" target="_blank">
+                                                        <img alt="" border="0" height="500" src="http://3.bp.blogspot.com/-OmZpsNGaFoo/VUDqAzHt8QI/AAAAAAAADt4/imVmE0UvOoU/s500-c/DeathtoStock3.jpg" width="500">
+                                                    </a>
+                                                </div>
+                                                <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/01/marzipan-sugar-plum-liquorice-roll.html">Marzipan sugar plum liquorice roll.</a></div>
+                                            </div>
+                                            <div style="clear: both;"></div>
+                                        </li>
+                                    </ul>
+                                    <div class="clear"></div>
+                                </div>
+                            </div>
+                        </aside>
+                    </div>
+                {% endblock sidebar %}
+
             </div>
         </div>
     {% endblock content %}

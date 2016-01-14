@@ -7,3 +7,4 @@ AppBundle\Entity\Post:
         updateTime: <dateTime($max = 'now')>
         tags: <numberBetween(1, 5)>x @tag*
         comments: <numberBetween(1, 2)>x @comment*
+        path: <randomElement(["keyboard.jpg", "keyboard.jpg"])>

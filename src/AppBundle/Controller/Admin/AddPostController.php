@@ -24,6 +24,7 @@ class AddPostController extends Controller
         $post = new Post();
         $post->setAuthor($user);
         $post->setStatus('published');
+
         $form = $this->createForm(AddPost::class, $post);
         $form->handleRequest($request);
 
@@ -40,6 +41,9 @@ class AddPostController extends Controller
                         $post->addTag($newTag);
                     }
                 }
+
+                $post->upload();
+
                 $em->persist($post);
                 $em->flush();
                 return $this->redirect($this->generateUrl('admin-posts', array('post' => $post)));

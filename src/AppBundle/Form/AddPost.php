@@ -19,6 +19,7 @@ class AddPost extends AbstractType
             ->add('title', TextType::class)
             ->add('content', TextareaType::class)
             ->add('tag_list', TextType::class)
+            ->add('file')
             ->add('submit', SubmitType::class)
             ->setMethod('POST')
         ;
