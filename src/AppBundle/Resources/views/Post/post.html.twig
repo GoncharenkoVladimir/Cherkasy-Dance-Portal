@@ -22,7 +22,7 @@
                         </div>
                         <div class="post-body entry-content" id="{{ post.slug }}">
                             <div class="separator">
-                                <img border="0" src="http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s1600/keyboard-old-typewriter-3319.jpg">
+                                <img border="0" src="{{ post.getWebPath|imagine_filter('my_thumb2') }}">
                             </div>
                             <div class="post-content">
                                 {{ post.content }}

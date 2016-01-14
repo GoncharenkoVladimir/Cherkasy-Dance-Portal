@@ -42,7 +42,7 @@ class AddPostController extends Controller
                     }
                 }
 
-                $post->upload();
+//                $post->upload();
 
                 $em->persist($post);
                 $em->flush();

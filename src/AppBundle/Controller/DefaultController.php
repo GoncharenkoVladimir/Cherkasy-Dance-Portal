@@ -39,7 +39,6 @@ class DefaultController extends Controller
         $word = new SearchModel();
 
         $form = $this->createForm(Search::class, $word);
-
         $form->add('submit', SubmitType::class, array('attr' => ['class' => 'search-btn']));
 
 
@@ -80,11 +79,12 @@ class DefaultController extends Controller
             $tagView = $repository->getRepository('AppBundle:Tag')->findOneByName($tag);
             $query = $tagView->getPosts();
         }
+        $page = $request->query->getInt('page', 1);
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
-            $request->query->getInt('page', 1)/*page number*/,
+            $page/*page number*/,
             5/*limit per page*/
         );
         return new JsonResponse(['posts' => $pagination->getItems()]);

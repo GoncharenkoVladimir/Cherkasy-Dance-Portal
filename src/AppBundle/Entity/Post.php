@@ -360,7 +360,7 @@ class Post implements \JsonSerializable
     {
         return null === $this->path
             ? null
-            : $this->getUploadRootDir().'/'.$this->id.'.'.$this->path;
+            : $this->getUploadRootDir().'/'.$this->path;
     }
 
     public function getWebPath()
@@ -429,7 +429,7 @@ class Post implements \JsonSerializable
         // which the UploadedFile move() method does
         $this->getFile()->move(
             $this->getUploadRootDir(),
-            $this->id.'.'.$this->getFile()->guessExtension()
+            $this->path
         );
 
         $this->setFile(null);
@@ -443,7 +443,8 @@ class Post implements \JsonSerializable
     public function preUpload()
     {
         if (null !== $this->getFile()) {
-            $this->path = $this->id.'.' . $this->getFile()->guessExtension();
+            $filename = sha1(uniqid(mt_rand(), true));
+            $this->path = $filename . '.' . $this->getFile()->guessExtension();
         }
     }
 
@@ -484,7 +485,8 @@ class Post implements \JsonSerializable
             'updateTime' => $this->getUpdateTime(),
             'author' => $this->getAuthor(),
             'comments' => $this->getComments(),
-            'slug' => $this->getSlug()
+            'slug' => $this->getSlug(),
+            'path' => $this->getWebPath()
         ];
     }
 }
