@@ -64,7 +64,7 @@ class Comment
     private $url;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments")
+     * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments", cascade={"persist"})
      */
     private $post;
 

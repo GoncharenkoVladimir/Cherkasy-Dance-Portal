@@ -4,5 +4,3 @@ AppBundle\Entity\User:
         password: <password()>
         email (unique): <email()>
         profile (unique): <word()>
-        posts (unique): 3x @post*
-        comments (unique): 3x @comment*
