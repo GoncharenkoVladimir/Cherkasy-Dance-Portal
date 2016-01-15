@@ -64,7 +64,7 @@
                                                         <div class="post-body entry-content" id="">
                                                             <div class="thumbs">
                                                                 <a href="{{ path('post_view', {'slug': value.slug }) }}" style="margin: 0px;">
-                                                                    <img src="{{ value.getWebPath|imagine_filter('my_thumb') }}" alt="Wypas cookie caramels soufflé caramels cookie ">
+                                                                    <img src="{{ value.getWebPath|imagine_filter('my_thumb') }}">
                                                                 </a>
                                                             </div>
                                                             <div class="items-right">
@@ -118,7 +118,7 @@
                             </div>
 
                             <div class="widget" id="categories">
-                                <h2>CATEGORIES</h2><hr>
+                                <h2>POST BY TAGS</h2><hr>
                                 <div class="widget-content categories-widget-content">
                                     <ul>
                                         {% for value in tags %}
@@ -144,42 +144,22 @@
                                 </div>
                             {% endblock search %}
                             <div class="widget PopularPosts" id="PopularPosts">
-                                <h2>FEATURED</h2><hr>
+                                <h2>LAST NEWS</h2><hr>
                                 <div class="widget-content popular-posts">
                                     <ul>
-                                        <li>
-                                            <div class="item-thumbnail-only">
-                                                <div class="item-thumbnail">
-                                                    <a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html" target="_blank">
-                                                        <img alt="" border="0" height="500" src="http://4.bp.blogspot.com/-GteVT4IofuQ/VQNd8fCd93I/AAAAAAAADgQ/EOXamheeLDU/s500-c/keyboard-old-typewriter-3319.jpg" width="500">
-                                                    </a>
+                                        {% for value in last_news %}
+                                            <li>
+                                                <div class="item-thumbnail-only">
+                                                    <div class="item-thumbnail">
+                                                        <a href="{{ path('post_view', {'slug': value.slug}) }}">
+                                                            <img border="0" src="{{ value.getWebPath|imagine_filter('last_news') }}">
+                                                        </a>
+                                                    </div>
+                                                    <div class="item-title"><a href="{{ path('post_view', {'slug': value.slug}) }}">{{ value.title }} </a></div>
                                                 </div>
-                                                <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/04/wypas-cookie-caramels-souffle-caramels.html">Wypas cookie caramels soufflé caramels cookie </a></div>
-                                            </div>
-                                            <div style="clear: both;"></div>
-                                        </li>
-                                        <li>
-                                            <div class="item-thumbnail-only">
-                                                <div class="item-thumbnail">
-                                                    <a href="http://asterism-mairagall.blogspot.com/2015/01/lollipop-dragee-carrot-cake.html" target="_blank">
-                                                        <img alt="" border="0" height="500" src="http://2.bp.blogspot.com/-lTmlQ2I0EKE/VQNeMx10mJI/AAAAAAAADgY/pqSbka6t0-Y/s500-c/DeathtoStock_Desk6.jpg" width="500">
-                                                    </a>
-                                                </div>
-                                                <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/01/lollipop-dragee-carrot-cake.html">Lollipop dragée carrot cake</a></div>
-                                            </div>
-                                            <div style="clear: both;"></div>
-                                        </li>
-                                        <li>
-                                            <div class="item-thumbnail-only">
-                                                <div class="item-thumbnail">
-                                                    <a href="http://asterism-mairagall.blogspot.com/2015/01/marzipan-sugar-plum-liquorice-roll.html" target="_blank">
-                                                        <img alt="" border="0" height="500" src="http://3.bp.blogspot.com/-OmZpsNGaFoo/VUDqAzHt8QI/AAAAAAAADt4/imVmE0UvOoU/s500-c/DeathtoStock3.jpg" width="500">
-                                                    </a>
-                                                </div>
-                                                <div class="item-title"><a href="http://asterism-mairagall.blogspot.com/2015/01/marzipan-sugar-plum-liquorice-roll.html">Marzipan sugar plum liquorice roll.</a></div>
-                                            </div>
-                                            <div style="clear: both;"></div>
-                                        </li>
+                                                <div style="clear: both;"></div>
+                                            </li>
+                                        {% endfor %}
                                     </ul>
                                     <div class="clear"></div>
                                 </div>

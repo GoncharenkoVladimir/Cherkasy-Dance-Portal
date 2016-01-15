@@ -32,36 +32,38 @@
 
                         </div>
                     </div>
-                    {% if comments|length > 0 %}
+
                         <div class="comments" id="comments">
                             <h3>{{ comments|length }} Comments</h3>
-                            <ul class="comments-list">
-                                {% for value in comments %}
-                                    <li>
-                                        <div class="avatar-image-container">
-                                            <img src="https://img1.blogblog.com/img/anon36.png">
-                                        </div>
-                                        <div class="comment-block">
-                                        <span class="name-user">
-                                            {% if value.author %}
-                                                {{ value.author }}
-                                            {% else %}
-                                                NONE
-                                            {% endif %}
-
-                                        </span>
-                                            <div class="content-comments">
-                                                {{ value.content }}
+                            {% if comments|length > 0 %}
+                                <ul class="comments-list">
+                                    {% for value in comments %}
+                                        <li>
+                                            <div class="avatar-image-container">
+                                                <img src="https://img1.blogblog.com/img/anon36.png">
                                             </div>
-                                        </div>
-                                    </li>
-                                {% endfor %}
-                            </ul>
+                                            <div class="comment-block">
+                                            <span class="name-user">
+                                                {% if value.author %}
+                                                    {{ value.author }}
+                                                {% else %}
+                                                    NONE
+                                                {% endif %}
+
+                                            </span>
+                                                <div class="content-comments">
+                                                    {{ value.content }}
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
                             <div class="block-comment">
                                 {{ form(form_comment) }}
                             </div>
                         </div>
-                    {% endif %}
+
                 </div>
             </div>
         </div>

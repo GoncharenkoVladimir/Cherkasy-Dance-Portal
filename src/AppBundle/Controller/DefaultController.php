@@ -51,6 +51,8 @@ class DefaultController extends Controller
             }
         }
 
+        $lastNews = $repo->lastNews($repo);
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
@@ -58,7 +60,7 @@ class DefaultController extends Controller
             5/*limit per page*/
         );
 
-        return ['posts' => $pagination, 'tags' => $tags, 'tag'=> $tag, 'form_search' => $form->createView()];
+        return ['posts' => $pagination, 'tags' => $tags, 'tag'=> $tag, 'form_search' => $form->createView(), 'last_news' => $lastNews];
     }
 
     /**

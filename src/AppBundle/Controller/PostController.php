@@ -49,7 +49,9 @@ class PostController extends Controller
                 return $this->redirect($this->generateUrl('post_view', array('slug' => $post->getSlug())));
             }
         }
+        $repo = $this->getDoctrine()->getRepository('AppBundle:Post');
+        $lastNews = $repo->lastNews($repo);
 
-        return ['post' => $post, 'comments' => $comments, 'form_comment' => $form->createView(), 'tags' => $tags];
+        return ['post' => $post, 'comments' => $comments, 'form_comment' => $form->createView(), 'tags' => $tags, 'last_news' => $lastNews];
     }
 }

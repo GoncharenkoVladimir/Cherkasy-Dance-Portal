@@ -18,4 +18,13 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
 
         return $query;
     }
+
+    function lastNews($repositories){
+        $query = $repositories->createQueryBuilder('p')
+            ->orderBy('p.createTime', 'DESC')
+            ->setMaxResults(3)
+            ->getQuery()->getResult();
+
+        return $query;
+    }
 }

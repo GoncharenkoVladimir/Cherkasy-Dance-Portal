@@ -87,6 +87,10 @@ liip_imagine:
                 quality: 75
                 filters:
                     thumbnail: { size: [770, 770], mode: outbound }
+        last_news:
+                quality: 75
+                filters:
+                    thumbnail: { size: [500, 500], mode: outbound }
 
 #KMP_paginator Configuration
 knp_paginator:
