@@ -1,5 +1,5 @@
 AppBundle\Entity\Comment:
-    comment{1..50}:
+    comment{1..60}:
         content: <text($maxNbChars = 500)>
         status: <randomElement(["published", "removed", "editing"])>
         createTime: <dateTime($max = 'now')>
