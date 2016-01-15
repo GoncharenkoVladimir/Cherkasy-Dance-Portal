@@ -23,7 +23,8 @@
         "knplabs/knp-paginator-bundle": "^2.5",
         "stof/doctrine-extensions-bundle": "^1.2",
         "friendsofsymfony/jsrouting-bundle": "^1.5",
-        "liip/imagine-bundle": "^1.4"
+        "liip/imagine-bundle": "^1.4",
+        "symfony/dom-crawler": "^3.0"
     },
     "require-dev": {
         "sensio/generator-bundle": "~3.0",
