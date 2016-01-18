@@ -4,6 +4,7 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * Comment
@@ -26,6 +27,9 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="content", type="string", length=255)
+     * @Assert\NotNull(
+     *     message = "Input content your comment."
+     * )
      */
     private $content;
 
@@ -53,6 +57,11 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="email", type="string", length=255)
+     * @Assert\NotNull(message = "Input your email.")
+     * @Assert\Email(
+     *     message = "The email '{{ value }}' is not a valid email.",
+     *     checkMX = true
+     * )
      */
     private $email;
 
@@ -60,11 +69,15 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
+     * @Assert\NotNull(
+     *     message = "Input your url."
+     * )
      */
     private $url;
 
     /**
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments", cascade={"persist"})
+     * @Assert\Url()
      */
     private $post;
 

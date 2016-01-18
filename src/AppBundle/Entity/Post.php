@@ -30,6 +30,9 @@ class Post implements \JsonSerializable
      * @var string
      *
      * @ORM\Column(name="title", type="string", length=255)
+     * @Assert\NotNull(
+     *     message = "Input title post."
+     * )
      */
     private $title;
 
@@ -37,6 +40,9 @@ class Post implements \JsonSerializable
      * @var string
      *
      * @ORM\Column(name="content", type="string", length=255)
+     * @Assert\NotNull(
+     *     message = "Input content your post."
+     * )
      */
     private $content;
 
@@ -92,7 +98,13 @@ class Post implements \JsonSerializable
     public $path;
 
     /**
-     * @Assert\File(maxSize="6000000")
+     * @Assert\File(
+     *     maxSize="6000000",
+     *     message = "Max size thumbnail 60Mb."
+     * )
+     * @Assert\NotNull(
+     *     message = "Upload thumbnail for this post."
+     * )
      */
     private $file;
 
