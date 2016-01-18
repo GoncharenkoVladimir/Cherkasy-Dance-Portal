@@ -27,9 +27,7 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="content", type="string", length=255)
-     * @Assert\NotNull(
-     *     message = "Input content your comment."
-     * )
+     * @Assert\NotNull()
      */
     private $content;
 
@@ -58,10 +56,7 @@ class Comment
      *
      * @ORM\Column(name="email", type="string", length=255)
      * @Assert\NotNull(message = "Input your email.")
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true
-     * )
+     * @Assert\Email()
      */
     private $email;
 
@@ -69,9 +64,7 @@ class Comment
      * @var string
      *
      * @ORM\Column(name="url", type="string", length=255)
-     * @Assert\NotNull(
-     *     message = "Input your url."
-     * )
+     * @Assert\NotNull()
      */
     private $url;
 
