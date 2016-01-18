@@ -2,7 +2,7 @@
 <html>
 <head>
     <meta charset="UTF-8" />
-    <title>{% block title %}Welcome!{% endblock %}</title>
+    <title>{% block title %}Welcome!{% endblock title %}</title>
     {% block stylesheets %}{% endblock %}
     <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     <script type="text/javascript" src="{{ asset('js/all.js') }}"></script>
@@ -20,7 +20,7 @@
     {% block header %}
         <div class="baner">
             <h2 class="text-center">Cherkassy Dance Portal</h2>
-            {% block titlepage %}<h3 class="text-center">Dance blog</h3>{Fix% endblock titlepage %}
+            {% block titlepage %}<h3 class="text-center">Dance blog</h3>{% endblock titlepage %}
             <div class="overlay"></div>
         </div>
         <header>
