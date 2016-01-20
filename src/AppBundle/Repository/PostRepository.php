@@ -27,4 +27,13 @@ class PostRepository extends \Doctrine\ORM\EntityRepository
 
         return $query;
     }
+
+    function popularNews($repositories){
+        $query = $repositories->createQueryBuilder('p')
+            ->orderBy('p.rating', 'DESC')
+            ->setMaxResults(5)
+            ->getQuery()->getResult();
+
+        return $query;
+    }
 }

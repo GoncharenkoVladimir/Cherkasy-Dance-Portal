@@ -103,11 +103,17 @@ class Post implements \JsonSerializable
 
     private $temp;
 
+    /**
+     * @ORM\Column(name="raiting", type="float")
+     */
+    private $rating;
+
     public function __construct()
     {
         $this->comments = new ArrayCollection();
         $this->tags = new ArrayCollection();
         $this->slug = $this->getSlug();
+        $this->rating = 0;
     }
 
     /**
@@ -470,6 +476,45 @@ class Post implements \JsonSerializable
             unlink($this->temp);
         }
     }
+
+    /**
+     * @return mixed
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * Set rating
+     * @param Comment $commentAdd
+     */
+    public function setRating($commentAdd)
+    {
+        $comments = $this->getComments();
+        $rating = $commentAdd->getRating();
+        $k = 1;
+
+        /**
+         * @var Comment $value
+         */
+        foreach($comments as $value){
+
+            $reg = $value->getRating();
+            if( $reg != 0){
+                $k++;
+            }
+            $rating = ($rating + $reg);
+        }
+
+        if($k != 0){
+            $rating = $rating/$k;
+        }
+
+        $this->rating = $rating;
+    }
+
+
 
     /**
      * Specify data which should be serialized to JSON

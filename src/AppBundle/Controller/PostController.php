@@ -27,23 +27,7 @@ class PostController extends Controller
         $tags = $this->getDoctrine()->getRepository('AppBundle:Tag')->findAll();
         $comments = $this->getDoctrine()->getRepository('AppBundle:Comment')->findByPost($post->getId());
 
-        $rating = 0;
-        $k = 0;
-
-        foreach($comments as $value){
-            /**
-             * @var Comment $value
-             */
-            $reg = $value->getRating();
-            if( $reg != 0){
-                $k++;
-            }
-            $rating = ($rating + $reg);
-        }
-
-        if($k != 0){
-            $rating = $rating/$k;
-        }
+        $rating = $post->getRating();
 
         $em = $this->getDoctrine()->getManager();
         $user = $this->getDoctrine()->getRepository('AppBundle:User')->find(84);
@@ -60,9 +44,9 @@ class PostController extends Controller
         if($request->getMethod() == Request::METHOD_POST){
             if ($form->isValid()) {
                 $commentAdd->setPost($post);
+                $commentAdd->getPost()->setRating($commentAdd);
                 $em->persist($commentAdd);
                 $em->flush();
-
                 return $this->redirect($this->generateUrl('post_view', array('slug' => $post->getSlug(), 'rating' => $rating)));
             }
         }

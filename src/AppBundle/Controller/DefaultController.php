@@ -2,6 +2,7 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\Comment;
 use AppBundle\Entity\Tag;
 use AppBundle\Form\Search;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -52,6 +53,7 @@ class DefaultController extends Controller
         }
 
         $lastNews = $repo->lastNews($repo);
+        $popularNews = $repo->popularNews($repo);
 
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
@@ -60,7 +62,13 @@ class DefaultController extends Controller
             5/*limit per page*/
         );
 
-        return ['posts' => $pagination, 'tags' => $tags, 'tag'=> $tag, 'form_search' => $form->createView(), 'last_news' => $lastNews];
+        return [
+            'posts' => $pagination,
+            'tags' => $tags,
+            'tag'=> $tag,
+            'form_search' => $form->createView(),
+            'last_news' => $lastNews,
+            'popular_news' => $popularNews];
     }
 
     /**

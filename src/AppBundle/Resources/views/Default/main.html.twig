@@ -47,7 +47,28 @@
                             <div class="widget SliderPopularPosts" id="SliderPopularPosts">
                                 <div class="widget-content">
                                     <div id="slider_post">
+                                        <h1> Popular news.</h1>
+                                        <hr>
+                                        <div class="swiper-container">
+                                            <div class="swiper-wrapper">
+                                                {% for value in popular_news %}
+                                                    <div class="swiper-slide">
+                                                        <h3><a href="{{ path('post_view', {'slug': value.slug }) }}"> {{ value.title }}</a></h3>
+                                                        <div class="rating">
+                                                            <i class="fa fa-thumbs-o-up"></i>
+                                                            <span>Rating: {{ value.rating }}</span>
+                                                        </div>
+                                                        <div>{{ value.content }}</div>
+                                                    </div>
+                                                {% endfor %}
 
+                                            </div>
+                                            <!-- Add Pagination -->
+                                            <div class="swiper-pagination"></div>
+                                            <!-- Add Arrows -->
+                                            <div class="swiper-button-next"></div>
+                                            <div class="swiper-button-prev"></div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -175,7 +196,6 @@
         <div class="footer">
             <div class="container">
                 <div class="bottom-credits">
-                    © <script type="text/javascript">var creditsyear = new Date();document.write(creditsyear.getFullYear());</script>2016
                     <a href="http://asterism-mairagall.blogspot.com/" title="ASTERISM">ASTERISM</a><br>
                     <i class="fa fa-times">
                     </i><a href="http://www.mairagall.com/en/" id="donotremove" target="_blank">Maira Gall</a>
@@ -221,6 +241,16 @@
                         }, 'json');
                     }
                 }
+            });
+
+            var swiper = new Swiper('.swiper-container', {
+                pagination: '.swiper-pagination',
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                slidesPerView: 1,
+                paginationClickable: true,
+                spaceBetween: 30,
+                loop: true
             });
         });
     </script>

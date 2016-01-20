@@ -13,7 +13,8 @@ gulp.task('less', function() {
 gulp.task('lib-js', function() {
     return gulp.src([
         'bower_components/jquery/dist/jquery.js',
-        'bower_components/bootstrap/dist/js/bootstrap.js'
+        'bower_components/bootstrap/dist/js/bootstrap.js',
+        'bower_components/Swiper/dist/js/swiper.min.js'
     ])
         .pipe(concatJs('all.js'))
         .pipe(minifyJs())

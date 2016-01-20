@@ -8,3 +8,4 @@ AppBundle\Entity\Post:
         tags: <numberBetween(1, 5)>x @tag*
         path: 'keyboard.jpg'
         author: @user*
+        rating: 0
