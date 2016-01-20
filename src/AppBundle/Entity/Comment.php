@@ -75,6 +75,16 @@ class Comment
     private $post;
 
     /**
+     * @ORM\Column(name="raiting", type="float")
+     */
+    private $rating;
+
+    public function __construct()
+    {
+        $this->raiting = 0;
+    }
+
+    /**
      * Get ida
      *
      * @return int
@@ -242,6 +252,22 @@ class Comment
     public function setPost($post)
     {
         $this->post = $post;
+    }
+
+    /**
+     * @return float
+     */
+    public function getRating()
+    {
+        return $this->rating;
+    }
+
+    /**
+     * @param float $rating
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
     }
 }
 

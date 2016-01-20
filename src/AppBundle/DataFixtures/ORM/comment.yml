@@ -7,3 +7,4 @@ AppBundle\Entity\Comment:
         url: <url()>
         post: @post*
         author: @user*
+        rating: 0

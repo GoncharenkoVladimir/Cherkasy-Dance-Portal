@@ -27,6 +27,24 @@ class PostController extends Controller
         $tags = $this->getDoctrine()->getRepository('AppBundle:Tag')->findAll();
         $comments = $this->getDoctrine()->getRepository('AppBundle:Comment')->findByPost($post->getId());
 
+        $rating = 0;
+        $k = 0;
+
+        foreach($comments as $value){
+            /**
+             * @var Comment $value
+             */
+            $reg = $value->getRating();
+            if( $reg != 0){
+                $k++;
+            }
+            $rating = ($rating + $reg);
+        }
+
+        if($k != 0){
+            $rating = $rating/$k;
+        }
+
         $em = $this->getDoctrine()->getManager();
         $user = $this->getDoctrine()->getRepository('AppBundle:User')->find(84);
 
@@ -45,13 +63,12 @@ class PostController extends Controller
                 $em->persist($commentAdd);
                 $em->flush();
 
-
-                return $this->redirect($this->generateUrl('post_view', array('slug' => $post->getSlug())));
+                return $this->redirect($this->generateUrl('post_view', array('slug' => $post->getSlug(), 'rating' => $rating)));
             }
         }
         $repo = $this->getDoctrine()->getRepository('AppBundle:Post');
         $lastNews = $repo->lastNews($repo);
 
-        return ['post' => $post, 'comments' => $comments, 'form_comment' => $form->createView(), 'tags' => $tags, 'last_news' => $lastNews];
+        return ['post' => $post, 'comments' => $comments, 'form_comment' => $form->createView(), 'tags' => $tags, 'last_news' => $lastNews, 'rating' => $rating];
     }
 }

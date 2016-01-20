@@ -20,6 +20,10 @@
                                 <span class="date">{{ post.updateTime|date }}</span>
                             </span>
                         </div>
+                        <div class="rating">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <span>Rating: {{ rating }}</span>
+                        </div>
                         <div class="post-body entry-content" id="{{ post.slug }}">
                             <div class="separator">
                                 <img border="0" src="{{ post.getWebPath|imagine_filter('my_thumb2') }}">
