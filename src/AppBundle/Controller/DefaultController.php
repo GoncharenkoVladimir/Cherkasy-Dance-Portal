@@ -2,7 +2,6 @@
 
 namespace AppBundle\Controller;
 
-use AppBundle\Entity\Comment;
 use AppBundle\Entity\Tag;
 use AppBundle\Form\Search;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -26,24 +25,14 @@ class DefaultController extends Controller
     {
         $repository = $this->getDoctrine();
         $tags = $repository->getRepository('AppBundle:Tag')->findAll();
-        if($tag == '0'){
-            $query = $repository->getRepository('AppBundle:Post')->findAll();
-        }else{
+        $repo = $repository->getRepository('AppBundle:Post');
 
-            /**
-             * @var \AppBundle\Entity\Tag $tagView
-             */
-            $tagView = $repository->getRepository('AppBundle:Tag')->findOneByName($tag);
-            $query = $tagView->getPosts();
-        }
+        $query = $this->get('app.main_query')->getQuery($repository,$tag);
 
         $word = new SearchModel();
 
         $form = $this->createForm(Search::class, $word);
         $form->add('submit', SubmitType::class, array('attr' => ['class' => 'search-btn']));
-
-
-        $repo = $repository->getRepository('AppBundle:Post');
 
         if($request->getMethod() == Request::METHOD_POST){
             $form->handleRequest($request);
@@ -68,7 +57,8 @@ class DefaultController extends Controller
             'tag'=> $tag,
             'form_search' => $form->createView(),
             'last_news' => $lastNews,
-            'popular_news' => $popularNews];
+            'popular_news' => $popularNews
+        ];
     }
 
     /**
@@ -79,16 +69,7 @@ class DefaultController extends Controller
     public function fffAction($tag, Request $request)
     {
         $repository = $this->getDoctrine();
-        if($tag == '0'){
-            $query = $repository->getRepository('AppBundle:Post')->findAll();
-        }else{
-
-            /**
-             * @var \AppBundle\Entity\Tag $tagView
-             */
-            $tagView = $repository->getRepository('AppBundle:Tag')->findOneByName($tag);
-            $query = $tagView->getPosts();
-        }
+        $query = $this->get('app.main_query')->getQuery($repository, $tag);
         $page = $request->query->getInt('page', 1);
 
         $paginator  = $this->get('knp_paginator');

@@ -53,6 +53,13 @@ class PostController extends Controller
         $repo = $this->getDoctrine()->getRepository('AppBundle:Post');
         $lastNews = $repo->lastNews($repo);
 
-        return ['post' => $post, 'comments' => $comments, 'form_comment' => $form->createView(), 'tags' => $tags, 'last_news' => $lastNews, 'rating' => $rating];
+        return [
+            'post' => $post,
+            'comments' => $comments,
+            'form_comment' => $form->createView(),
+            'tags' => $tags,
+            'last_news' => $lastNews,
+            'rating' => $rating
+        ];
     }
 }
