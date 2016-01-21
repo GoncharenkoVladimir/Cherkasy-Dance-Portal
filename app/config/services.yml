@@ -8,5 +8,6 @@ services:
 #        class: AppBundle\Directory\ClassName
 #        arguments: ["@another_service_name", "plain_value", "%parameter_name%"]
     app.main_query:
-        class:        AppBundle\Service\MainQuery
-        arguments:    []
+        class: AppBundle\Service\MainQuery
+        arguments:
+            - @doctrine

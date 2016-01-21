@@ -4,6 +4,9 @@ namespace AppBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Security\Core\Role\Role;
+use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * User
@@ -11,8 +14,11 @@ use Doctrine\Common\Collections\ArrayCollection;
  * @ORM\Table(name="user")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\UserRepository")
  */
-class User
+class User implements UserInterface
 {
+    const ROLE_SUPER_ADMIN = "ROLE_SUPER_ADMIN";
+    const ROLE_USER = "ROLE_USER";
+
     /**
      * @var int
      *
@@ -44,13 +50,6 @@ class User
     private $email;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="profile", type="string", length=255, unique=true)
-     */
-    private $profile;
-
-    /**
      *@ORM\OneToMany(targetEntity="Post", mappedBy="author", cascade={"remove"})
      */
     private $posts;
@@ -59,11 +58,42 @@ class User
      *
      */
     private $comments;
+    /**
+     * @var array
+     *
+     * @ORM\Column(name="roles", type="object")
+     */
+    private $roles;
+
+    /**
+     * @var bool
+     *
+     * @ORM\Column(name="enabled", type="boolean")
+     */
+        private $enabled;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="salt", type="string", length=255)
+     */
+    protected $salt;
+
+    /**
+     * @var string
+     *
+     * @Assert\NotNull(groups={"registration", "new"})
+     * @Assert\Length(min=6, groups={"registration", "new"})
+     */
+    protected $plainPassword;
 
     public function __construct()
     {
         $this->posts = new ArrayCollection();
         $this->comments = new ArrayCollection();
+        $this->setEnabled(true);
+        $this->setSalt(md5(uniqid()));
+        $this->setRoles([self::ROLE_USER]);
     }
 
     /**
@@ -149,30 +179,6 @@ class User
     }
 
     /**
-     * Set profile
-     *
-     * @param string $profile
-     *
-     * @return User
-     */
-    public function setProfile($profile)
-    {
-        $this->profile = $profile;
-
-        return $this;
-    }
-
-    /**
-     * Get profile
-     *
-     * @return string
-     */
-    public function getProfile()
-    {
-        return $this->profile;
-    }
-
-    /**
      * Remove post
      *
      * @param Post $post
@@ -246,5 +252,117 @@ class User
     public function __toString() {
         return (string) $this->getUsername();
     }
+
+/*---------------------------------------------------Authentication-------------------------------------------------- */
+    /**
+     * Set roles
+     *
+     * @param array $roles
+     * @return User
+     */
+    public function setRoles($roles)
+    {
+        $this->roles = $roles;
+
+        return $this;
+    }
+
+    /**
+     * Get roles
+     *
+     * @return array
+     */
+    public function getRoles()
+    {
+        return $this->roles;
+    }
+
+
+    /**
+     * Set salt
+     *
+     * @param string $salt
+     * @return User
+     */
+    public function setSalt($salt)
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
+    /**
+     * Get salt
+     *
+     * @return string
+     */
+    public function getSalt()
+    {
+        return $this->salt;
+    }
+
+    /**
+     * Removes sensitive data from the user.
+     *
+     */
+    public function eraseCredentials()
+    {
+        return null;
+    }
+
+    /**
+     * @param string $plainPassword
+     * @return User
+     */
+    public function setPlainPassword($plainPassword)
+    {
+        $this->plainPassword = $plainPassword;
+        return $this;
+    }
+
+    /**
+     * @return string
+     */
+    public function getPlainPassword()
+    {
+        return $this->plainPassword;
+    }
+
+    /**
+     * @param boolean $enabled
+     * @return User
+     */
+    public function setEnabled($enabled)
+    {
+        $this->enabled = $enabled;
+        return $this;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function getEnabled()
+    {
+        return $this->enabled;
+    }
+
+    /**
+     * Checks whether the user is enabled.
+     *
+     * Internally, if this method returns false, the authentication system
+     * will throw a DisabledException and prevent login.
+     *
+     * @return Boolean true if the user is enabled, false otherwise
+     *
+     * @see DisabledException
+     */
+    public function isEnabled()
+    {
+        return $this->getEnabled();
+    }
+
+
+
+/*-----------------------------------------------End Authentication-------------------------------------------------- */
 }
 

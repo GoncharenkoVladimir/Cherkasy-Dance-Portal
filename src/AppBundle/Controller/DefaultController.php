@@ -5,6 +5,7 @@ namespace AppBundle\Controller;
 use AppBundle\Entity\Tag;
 use AppBundle\Form\Search;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -27,7 +28,7 @@ class DefaultController extends Controller
         $tags = $repository->getRepository('AppBundle:Tag')->findAll();
         $repo = $repository->getRepository('AppBundle:Post');
 
-        $query = $this->get('app.main_query')->getQuery($repository,$tag);
+        $query = $this->get('app.main_query')->getQuery($tag);
 
         $word = new SearchModel();
 
@@ -44,6 +45,8 @@ class DefaultController extends Controller
         $lastNews = $repo->lastNews($repo);
         $popularNews = $repo->popularNews($repo);
 
+        $username = $this->getUser();
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
@@ -57,7 +60,8 @@ class DefaultController extends Controller
             'tag'=> $tag,
             'form_search' => $form->createView(),
             'last_news' => $lastNews,
-            'popular_news' => $popularNews
+            'popular_news' => $popularNews,
+            'user' => $username
         ];
     }
 
@@ -68,8 +72,7 @@ class DefaultController extends Controller
      */
     public function fffAction($tag, Request $request)
     {
-        $repository = $this->getDoctrine();
-        $query = $this->get('app.main_query')->getQuery($repository, $tag);
+        $query = $this->get('app.main_query')->getQuery($tag);
         $page = $request->query->getInt('page', 1);
 
         $paginator  = $this->get('knp_paginator');

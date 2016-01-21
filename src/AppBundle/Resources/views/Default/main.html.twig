@@ -122,15 +122,13 @@
                             </div>
 
                             <div class="widget" id="login_form">
-                                <h2 class="title">Sign Up</h2><hr>
+                                <h2 class="title">Session</h2><hr>
                                 <div class="widget-content">
-                                    <!-- Begin MailChimp Signup Form -->
+                                    <p>Your login as {{ user }}</p>
                                     <div id="mc_embed_signup">
-                                        <form action="" method="post" id="mc-embedded-signup-form" name="" class="validate" novalidate="">
-                                            <div id="mc_embed_signup_scroll">
-                                                <p>Enter your e-mail and password!!!</p>
-                                            </div>
-                                        </form>
+                                        <span class="logout_button">
+                                            <a href="{{ path('logout') }}">Logout</a>
+                                        </span>
                                     </div>
 
                                     <!--End mc_embed_signup-->

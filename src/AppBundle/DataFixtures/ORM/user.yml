@@ -4,3 +4,4 @@ AppBundle\Entity\User:
         password: <password()>
         email (unique): <email()>
         profile (unique): <word()>
+        roles: 'ROLE_USER'

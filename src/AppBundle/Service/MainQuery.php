@@ -2,22 +2,29 @@
 
 namespace AppBundle\Service;
 
+use Doctrine\Bundle\DoctrineBundle\Registry;
+
 class MainQuery
 {
-    public $query;
+    protected $em;
 
-    public function getQuery($repository, $tag){
+    public function __construct( Registry $doctrine) {
+        $this->em = $doctrine->getManager();
+    }
+
+    public function getQuery($tag){
+
         if($tag == '0'){
-            $this->query = $repository->getRepository('AppBundle:Post')->findAll();
+            $query = $this->em->getRepository('AppBundle:Post')->findAll();
         }else{
 
             /**
              * @var \AppBundle\Entity\Tag $tagView
              */
-            $tagView = $repository->getRepository('AppBundle:Tag')->findOneByName($tag);
-            $this->query = $tagView->getPosts();
+            $tagView = $this->em->getRepository('AppBundle:Tag')->findOneByName($tag);
+            $query = $tagView->getPosts();
         }
 
-        return $this->query;
+        return $query;
     }
 }

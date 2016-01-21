@@ -7,3 +7,9 @@ fos_js_routing:
 
 _liip_imagine:
     resource: "@LiipImagineBundle/Resources/config/routing.xml"
+
+login_check:
+    path: /home/login_check
+
+logout:
+    path: /home/logout

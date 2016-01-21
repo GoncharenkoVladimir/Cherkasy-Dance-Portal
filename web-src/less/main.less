@@ -15,10 +15,7 @@ a img {
     border: none;
     position: relative;
 }
-a:link {
-    text-decoration: none;
-    color: #e0e3e8;
-}
+
 div.clear {
     clear: both;
 }
@@ -284,20 +281,7 @@ header {
         margin-top: 0;
     }
     #login_form{
-        input {
-            margin-bottom: 10px;
-            text-align: left;
-            font: 400 10px Open Sans, sans-serif;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            padding: 0 0 8px;
-            border-top: none;
-            border-left: none;
-            border-right: none;
-            border-bottom: 2px solid #e0e3e8;
-            width: 100%;
-        }
-        input[type=submit]{
+        .logout_button a{
             background: #1a1a1a;
             border: none;
             color: #e0e3e8;
@@ -305,10 +289,12 @@ header {
             font: 400 10px Open Sans, sans-serif;
             letter-spacing: 2px;
             cursor: pointer;
-            width: 100%;
+            width: 200px;
             padding: 8px;
-            margin: 9px 0 0;
-            text-align: left;
+            margin: 9px auto 0;
+            display: block;
+            text-decoration: none;
+            text-align: center;
         }
     }
     #categories{
@@ -601,3 +587,35 @@ header {
 .swiper-container-horizontal>.swiper-pagination-bullets{
     bottom: 0;
 }
+/*-----------------------------------------------End Last news slider ------------------------------------------------*/
+
+/*-------------------------------------------------- Login form ------------------------------------------------------*/
+
+.block_login{
+    padding-bottom: 20px;
+    overflow: hidden;
+    input{
+        width: 70%;
+    }
+    label{
+        width: 30%;
+        min-width: 67px;
+    }
+    button[type=submit]{
+        background: #1a1a1a;
+        border: none;
+        color: #e0e3e8;
+        text-transform: uppercase;
+        font: 400 10px Open Sans, sans-serif;
+        letter-spacing: 2px;
+        cursor: pointer;
+        width: 70%;
+        padding: 8px;
+        margin: 9px auto 0;
+        text-align: center;
+        display: block;
+        float: right;
+    }
+}
+
+/*-------------------------------------------------- End Login form --------------------------------------------------*/
