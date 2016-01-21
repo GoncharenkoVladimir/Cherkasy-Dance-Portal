@@ -53,12 +53,16 @@
                                             <div class="swiper-wrapper">
                                                 {% for value in popular_news %}
                                                     <div class="swiper-slide">
-                                                        <h3><a href="{{ path('post_view', {'slug': value.slug }) }}"> {{ value.title }}</a></h3>
-                                                        <div class="rating">
-                                                            <i class="fa fa-thumbs-o-up"></i>
-                                                            <span>Rating: {{ value.rating }}</span>
+                                                        <div class="bg_post" style="background-image: url('{{ value.getWebPath|imagine_filter('my_thumb') }}')">
+                                                            <div class="post_container_slider">
+                                                                <h3 class="post_title_slider"><a href="{{ path('post_view', {'slug': value.slug }) }}"> {{ value.title }}</a></h3>
+                                                                <div class="rating">
+                                                                    <i class="fa fa-thumbs-o-up"></i>
+                                                                    <span>Rating: {{ value.rating|round(1, 'floor') }}</span>
+                                                                </div>
+                                                                <div class="post_description_slider">{{ value.content|length > 50 ? value.content|slice(0, 150) ~ '...' : value.content }}</div>
+                                                            </div>
                                                         </div>
-                                                        <div>{{ value.content }}</div>
                                                     </div>
                                                 {% endfor %}
 
