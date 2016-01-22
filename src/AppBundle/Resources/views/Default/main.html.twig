@@ -128,7 +128,7 @@
                             <div class="widget" id="login_form">
                                 <h2 class="title">Session</h2><hr>
                                 <div class="widget-content">
-                                    <p>Your login as {{ user }}</p>
+                                    <p>You login as {{ app.user.username }}</p>
                                     <div id="mc_embed_signup">
                                         <span class="logout_button">
                                             <a href="{{ path('logout') }}">Logout</a>
@@ -178,6 +178,7 @@
                                                             <img border="0" src="{{ value.getWebPath|imagine_filter('last_news') }}">
                                                         </a>
                                                     </div>
+                                                    <div style="clear: both;"></div>
                                                     <div class="item-title"><a href="{{ path('post_view', {'slug': value.slug}) }}">{{ value.title }} </a></div>
                                                 </div>
                                                 <div style="clear: both;"></div>

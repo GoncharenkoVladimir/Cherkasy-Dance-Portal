@@ -45,8 +45,6 @@ class DefaultController extends Controller
         $lastNews = $repo->lastNews($repo);
         $popularNews = $repo->popularNews($repo);
 
-        $username = $this->getUser();
-
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
@@ -60,8 +58,7 @@ class DefaultController extends Controller
             'tag'=> $tag,
             'form_search' => $form->createView(),
             'last_news' => $lastNews,
-            'popular_news' => $popularNews,
-            'user' => $username
+            'popular_news' => $popularNews
         ];
     }
 
