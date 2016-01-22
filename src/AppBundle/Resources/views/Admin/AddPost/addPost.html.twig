@@ -4,6 +4,7 @@
     <div class="block_add_post">
         <h1>Add new post!</h1>
         {{ form(form) }}
+        {{ tinymce_init() }}
     </div>
 {% endblock contentAdmin %}
 
@@ -11,7 +12,10 @@
     <script type="text/javascript" src="{{ asset('js/jquery.tagsinput.min.js') }}"></script>
     <script>
         jQuery(document).ready(function(){
-            $('#add_post_tag_list').tagsInput();
+            $('#add_post_tag_list').tagsInput({
+                'width':'100%',
+                'height': '47px'
+            });
         })
     </script>
 {% endblock javascripts %}

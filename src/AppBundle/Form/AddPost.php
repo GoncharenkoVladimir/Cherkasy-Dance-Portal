@@ -17,7 +17,11 @@ class AddPost extends AbstractType
     {
         $builder
             ->add('title', TextType::class)
-            ->add('content', TextareaType::class)
+            ->add('content', TextareaType::class, array(
+                'attr' => [
+                    'class' => 'tinymce',
+                    'data-theme' => 'bbcode'
+                ]))
             ->add('tag_list', TextType::class)
             ->add('file')
             ->add('submit', SubmitType::class)
