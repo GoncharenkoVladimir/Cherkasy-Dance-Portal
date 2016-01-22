@@ -361,6 +361,23 @@ class User implements UserInterface
         return $this->getEnabled();
     }
 
+    function jsonSerialize()
+    {
+        return [
+            'id' => $this->getId(),
+            'username' => $this->getUsername(),
+//            'content' => $this->getContent(),
+//            'tags' => $this->getTags(),
+//            'status' => $this->getStatus(),
+//            'createTime' => $this->getCreateTime()->format('F d, o H:i'),
+//            'updateTime' => $this->getUpdateTime(),
+//            'author' => $this->getAuthor(),
+//            'comments' => $this->getComments(),
+//            'slug' => $this->getSlug(),
+//            'path' => $this->getWebPath()
+        ];
+    }
+
 
 
 /*-----------------------------------------------End Authentication-------------------------------------------------- */

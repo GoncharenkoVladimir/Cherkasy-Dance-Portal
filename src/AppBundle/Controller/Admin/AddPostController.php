@@ -20,9 +20,8 @@ class AddPostController extends Controller
     {
 
         $em = $this->getDoctrine()->getManager();
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find(84);
         $post = new Post();
-        $post->setAuthor($user);
+        $post->setAuthor($this->getUser());
         $post->setStatus('published');
 
         $form = $this->createForm(AddPost::class, $post);
