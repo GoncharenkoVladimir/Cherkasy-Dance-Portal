@@ -17,7 +17,7 @@ use AppBundle\Form\Model\SearchModel;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/{tag}", name="homepage", defaults={"tag" = 0})
+     * @Route("/{_locale}{tag}", name="homepage", defaults={"tag" = 0, "_locale" = "ru"})
      * @Template()
      * @param string $tag
      * @return Post

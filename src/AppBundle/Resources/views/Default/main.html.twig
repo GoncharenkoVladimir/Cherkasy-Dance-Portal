@@ -25,14 +25,11 @@
         </div>
         <header>
             <div class="container">
-                {#<div class="logo">#}
-                    {#<a href="{{ path('homepage') }}"></a>#}
-                {#</div>#}
                 <nav>
                     <ul>
-                        <li><a href="{{ path('homepage') }}">HOME</a></li>
-                        <li><a href="{{ path('homepage') }}">ABOUT</a></li>
-                        <li><a href="{{ path('homepage') }}">CONTACTS</a></li>
+                        <li><a href="{{ path('homepage') }}">{{ "menu.home"|trans }}</a></li>
+                        <li><a href="{{ path('homepage') }}">{{ "menu.about"|trans }}</a></li>
+                        <li><a href="{{ path('homepage') }}">{{ "menu.contact"|trans }}</a></li>
                     </ul>
                 </nav>
             </div>
@@ -47,7 +44,7 @@
                             <div class="widget SliderPopularPosts" id="SliderPopularPosts">
                                 <div class="widget-content">
                                     <div id="slider_post">
-                                        <h1> Popular news.</h1>
+                                        <h1> {{ "headers.popular_news" |trans }}</h1>
                                         <hr>
                                         <div class="swiper-container">
                                             <div class="swiper-wrapper">
@@ -118,7 +115,7 @@
                     <div class="col-lg-4">
                         <aside>
                             <div class="widget" id="welcom_text">
-                                <h2 class="title">WELCOME</h2><hr>
+                                <h2 class="title">{{ "headers.welcome" |trans }}</h2><hr>
                                 <div class="widget-content">
                                     Asterism is a modern and responsive Blogger template, perfect for fashion and lifestyle blogs. Here you can add a welcome text.
                                 </div>
@@ -126,12 +123,12 @@
                             </div>
 
                             <div class="widget" id="login_form">
-                                <h2 class="title">Session</h2><hr>
+                                <h2 class="title">{{ "headers.session" |trans }}</h2><hr>
                                 <div class="widget-content">
-                                    <p>You login as {{ app.user.username }}</p>
+                                    <p>{{ "headers.login"|trans }} {{ app.user.username }}</p>
                                     <div id="mc_embed_signup">
                                         <span class="logout_button">
-                                            <a href="{{ path('logout') }}">Logout</a>
+                                            <a href="{{ path('logout') }}">{{ "headers.logout"|trans }}</a>
                                         </span>
                                     </div>
 
@@ -141,7 +138,7 @@
                             </div>
 
                             <div class="widget" id="categories">
-                                <h2>POST BY TAGS</h2><hr>
+                                <h2>{{ "headers.post_by_tags" |trans }}</h2><hr>
                                 <div class="widget-content categories-widget-content">
                                     <ul>
                                         {% for value in tags %}
@@ -155,7 +152,7 @@
                             </div>
                             {% block search %}
                                 <div class="widget" id="search">
-                                    <h2 class="title">SEARCH</h2><hr>
+                                    <h2 class="title">{{ "headers.search" |trans }}</h2><hr>
                                     <div class="widget-content">
                                         <div id="searchthis">
                                             {{ form_widget(form_search.name) }}
@@ -167,7 +164,7 @@
                                 </div>
                             {% endblock search %}
                             <div class="widget PopularPosts" id="PopularPosts">
-                                <h2>LAST NEWS</h2><hr>
+                                <h2>{{ "headers.last_news" |trans }}</h2><hr>
                                 <div class="widget-content popular-posts">
                                     <ul>
                                         {% for value in last_news %}
