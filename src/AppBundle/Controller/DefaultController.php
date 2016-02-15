@@ -17,7 +17,7 @@ use AppBundle\Form\Model\SearchModel;
 class DefaultController extends Controller
 {
     /**
-     * @Route("/{_locale}{tag}", name="homepage", defaults={"tag" = 0, "_locale" = "ru"})
+     * @Route("/{_locale}{tag}", name="homepage", defaults={"tag" = 0, "_locale" = "en"})
      * @Template()
      * @param string $tag
      * @return Post
@@ -45,6 +45,8 @@ class DefaultController extends Controller
         $lastNews = $repo->lastNews($repo);
         $popularNews = $repo->popularNews($repo);
 
+        $locale = $request->getLocale();
+
         $paginator  = $this->get('knp_paginator');
         $pagination = $paginator->paginate(
             $query, /* query NOT result */
@@ -58,7 +60,8 @@ class DefaultController extends Controller
             'tag'=> $tag,
             'form_search' => $form->createView(),
             'last_news' => $lastNews,
-            'popular_news' => $popularNews
+            'popular_news' => $popularNews,
+            'locale' => $locale
         ];
     }
 

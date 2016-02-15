@@ -13,7 +13,7 @@ use AppBundle\Entity\Post;
 class PostController extends Controller
 {
     /**
-     * @Route("/post/{slug}", name="post_view")
+     * @Route("/{_locale}/post/{slug}", name="post_view", defaults={"tag" = 0, "_locale" = "en"})
      * @param string $slug
      * @Template()
      * @return array
@@ -28,6 +28,7 @@ class PostController extends Controller
         $comments = $this->getDoctrine()->getRepository('AppBundle:Comment')->findByPost($post->getId());
 
         $rating = $post->getRating();
+        $locale = $request->getLocale();
 
         $em = $this->getDoctrine()->getManager();
         $user = $this->getDoctrine()->getRepository('AppBundle:User')->find(84);
@@ -59,7 +60,8 @@ class PostController extends Controller
             'form_comment' => $form->createView(),
             'tags' => $tags,
             'last_news' => $lastNews,
-            'rating' => $rating
+            'rating' => $rating,
+            'locale' => $locale
         ];
     }
 }

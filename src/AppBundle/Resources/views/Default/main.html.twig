@@ -19,6 +19,12 @@
 {% block body %}
     {% block header %}
         <div class="baner">
+            <div class="language">
+                <ul>
+                    <li><a href="{{ path('homepage', {'_locale':'ru' }) }}">RU</a></li>
+                    <li><a href="{{ path('homepage', {'_locale':'en' }) }}">EN</a></li>
+                </ul>
+            </div>
             <h2 class="text-center">Cherkassy Dance Portal</h2>
             {% block titlepage %}<h3 class="text-center">Dance blog</h3>{% endblock titlepage %}
             <div class="overlay"></div>
@@ -52,7 +58,9 @@
                                                     <div class="swiper-slide">
                                                         <div class="bg_post" style="background-image: url('{{ value.getWebPath|imagine_filter('my_thumb') }}')">
                                                             <div class="post_container_slider">
-                                                                <h3 class="post_title_slider"><a href="{{ path('post_view', {'slug': value.slug }) }}"> {{ value.title }}</a></h3>
+                                                                <h3 class="post_title_slider">
+                                                                    <a href="{{ path('post_view', {'slug': value.slug, '_locale': locale }) }}"> {{ value.title }}</a>
+                                                                </h3>
                                                                 <div class="rating">
                                                                     <i class="fa fa-thumbs-o-up"></i>
                                                                     <span>Rating: {{ value.rating|round(1, 'floor') }}</span>
@@ -91,12 +99,12 @@
                                                             </div>
                                                             <div class="items-right">
                                                                 <h3 class="post-title entry-title">
-                                                                    <a href="{{ path('post_view', {'slug': value.slug}) }}">{{ value.title }}</a>
+                                                                    <a href="{{ path('post_view', {'slug': value.slug, '_locale': locale }) }}">{{ value.title }}</a>
                                                                 </h3>
                                                                 <h2 class="date-header"><span>{{ value.createTime|date }}</span></h2>
                                                                 <p class="excerpt">  {{ value.content }}</p>
                                                                 <div class="jump-link">
-                                                                    <a href="{{ path('post_view', {'slug': value.slug}) }}">Continue Reading<i class="fa fa-caret-right"></i></a>
+                                                                    <a href="{{ path('post_view', {'slug': value.slug, '_locale': locale }) }}">Continue Reading<i class="fa fa-caret-right"></i></a>
                                                                 </div>
                                                             </div>
                                                             <div style="clear: both;"></div>
@@ -171,12 +179,12 @@
                                             <li>
                                                 <div class="item-thumbnail-only">
                                                     <div class="item-thumbnail">
-                                                        <a href="{{ path('post_view', {'slug': value.slug}) }}">
+                                                        <a href="{{ path('post_view', {'slug': value.slug, '_locale': locale }) }}">
                                                             <img border="0" src="{{ value.getWebPath|imagine_filter('last_news') }}">
                                                         </a>
                                                     </div>
                                                     <div style="clear: both;"></div>
-                                                    <div class="item-title"><a href="{{ path('post_view', {'slug': value.slug}) }}">{{ value.title }} </a></div>
+                                                    <div class="item-title"><a href="{{ path('post_view', {'slug': value.slug, '_locale': locale }) }}">{{ value.title }} </a></div>
                                                 </div>
                                                 <div style="clear: both;"></div>
                                             </li>
