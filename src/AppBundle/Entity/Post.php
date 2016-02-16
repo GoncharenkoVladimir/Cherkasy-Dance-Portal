@@ -104,7 +104,7 @@ class Post implements \JsonSerializable
     private $temp;
 
     /**
-     * @ORM\Column(name="raiting", type="float")
+     * @ORM\Column(name="rating", type="float")
      */
     private $rating;
 
@@ -486,10 +486,19 @@ class Post implements \JsonSerializable
     }
 
     /**
+     * @param mixed $rating
+     */
+    public function setRating($rating)
+    {
+        $this->rating = $rating;
+    }
+
+
+    /**
      * Set rating
      * @param Comment $commentAdd
      */
-    public function setRating($commentAdd)
+    public function calcRating($commentAdd)
     {
         $comments = $this->getComments();
         $rating = $commentAdd->getRating();

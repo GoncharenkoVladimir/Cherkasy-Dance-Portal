@@ -19,7 +19,8 @@ class CreateAdminCommand extends ContainerAwareCommand
             ->setDescription('Create an admin user to the Admin Dashboard')
             ->addArgument('username', InputArgument::REQUIRED, 'username')
             ->addArgument('email', InputArgument::REQUIRED, 'email')
-            ->addArgument('password', InputArgument::REQUIRED, 'password');
+            ->addArgument('password', InputArgument::REQUIRED, 'password')
+            ->addArgument('url', InputArgument::REQUIRED, 'url');
     }
 
     protected function execute(InputInterface $input, OutputInterface $output)
@@ -27,13 +28,14 @@ class CreateAdminCommand extends ContainerAwareCommand
         $username = $input->getArgument('username');
         $plainPassword = $input->getArgument('password');
         $email = $input->getArgument('email');
+        $url = $input->getArgument('url');
 
         $admin = new User();
         $form = $this->getContainer()->get('form.factory')->create(new Registration(), $admin, [
             'csrf_protection' => false,
             'validation_groups' => 'new'
         ]);
-        $form->submit(['username' => $username, 'plainPassword' => $plainPassword, 'email' => $email]);
+        $form->submit(['username' => $username, 'plainPassword' => $plainPassword, 'email' => $email, 'url' => $url]);
 
         if (!$form->isValid()) {
             $output->writeln('Incorrect data!!!');
@@ -54,6 +56,7 @@ class CreateAdminCommand extends ContainerAwareCommand
         $admin->setRoles([User::ROLE_SUPER_ADMIN]);
         $encoder = $this->getContainer()->get('security.encoder_factory')->getEncoder($admin);
         $admin->setPassword($encoder->encodePassword( $admin->getPlainPassword(), $admin->getSalt()));
+        $admin->setUrl('tttt.ttt.tt');
 
         $em->persist($admin);
         $em->flush();

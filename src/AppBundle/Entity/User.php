@@ -50,6 +50,13 @@ class User implements UserInterface
     private $email;
 
     /**
+     * @var string
+     *
+     * @ORM\Column(name="url", type="string", length=255, unique=true)
+     */
+    private $url;
+
+    /**
      *@ORM\OneToMany(targetEntity="Post", mappedBy="author", cascade={"remove"})
      */
     private $posts;
@@ -177,6 +184,23 @@ class User implements UserInterface
     {
         return $this->email;
     }
+
+    /**
+     * @return string
+     */
+    public function getUrl()
+    {
+        return $this->url;
+    }
+
+    /**
+     * @param string $url
+     */
+    public function setUrl($url)
+    {
+        $this->url = $url;
+    }
+
 
     /**
      * Remove post
