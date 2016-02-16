@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Entity\Comment;
+use AppBundle\Entity\User;
 use AppBundle\Form\AddComment;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
@@ -30,13 +31,14 @@ class PostController extends Controller
         $rating = $post->getRating();
 
         $em = $this->getDoctrine()->getManager();
-        $user = $this->getDoctrine()->getRepository('AppBundle:User')->find(84);
+        /**
+         * @var User $user
+         */
+        $user = $this->getUser();
 
         $commentAdd = new Comment();
         $commentAdd->setAuthor($user);
         $commentAdd->setStatus('published');
-        $commentAdd->setEmail('test@test.test');
-        $commentAdd->setUrl('test.tt.ttt');
 
         $form = $this->createForm(AddComment::class, $commentAdd);
         $form->handleRequest($request);
@@ -44,7 +46,7 @@ class PostController extends Controller
         if($request->getMethod() == Request::METHOD_POST){
             if ($form->isValid()) {
                 $commentAdd->setPost($post);
-                $commentAdd->getPost()->setRating($commentAdd);
+                $commentAdd->getPost()->calcRating($commentAdd);
                 $em->persist($commentAdd);
                 $em->flush();
                 return $this->redirect($this->generateUrl('post_view', array('slug' => $post->getSlug(), 'rating' => $rating)));

@@ -52,30 +52,13 @@ class Comment
     private $author;
 
     /**
-     * @var string
-     *
-     * @ORM\Column(name="email", type="string", length=255)
-     * @Assert\NotNull(message = "Input your email.")
-     * @Assert\Email()
-     */
-    private $email;
-
-    /**
-     * @var string
-     *
-     * @ORM\Column(name="url", type="string", length=255)
-     * @Assert\NotNull()
-     */
-    private $url;
-
-    /**
      * @ORM\ManyToOne(targetEntity="Post", inversedBy="comments", cascade={"persist"})
      * @Assert\Url()
      */
     private $post;
 
     /**
-     * @ORM\Column(name="raiting", type="float")
+     * @ORM\Column(name="rating", type="float")
      */
     private $rating;
 
@@ -103,7 +86,7 @@ class Comment
      */
     public function setContent($content)
     {
-        $this->content = $content;
+        $this->content = strip_tags($content);
 
         return $this;
     }
@@ -188,54 +171,6 @@ class Comment
     public function getAuthor()
     {
         return $this->author;
-    }
-
-    /**
-     * Set email
-     *
-     * @param string $email
-     *
-     * @return Comment
-     */
-    public function setEmail($email)
-    {
-        $this->email = $email;
-
-        return $this;
-    }
-
-    /**
-     * Get email
-     *
-     * @return string
-     */
-    public function getEmail()
-    {
-        return $this->email;
-    }
-
-    /**
-     * Set url
-     *
-     * @param string $url
-     *
-     * @return Comment
-     */
-    public function setUrl($url)
-    {
-        $this->url = $url;
-
-        return $this;
-    }
-
-    /**
-     * Get url
-     *
-     * @return string
-     */
-    public function getUrl()
-    {
-        return $this->url;
     }
 
     /**

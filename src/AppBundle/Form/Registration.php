@@ -16,6 +16,7 @@ class Registration extends AbstractType
             ->add('username', TextType::class, array('label' => 'Login'))
             ->add('plainPassword', TextType::class, array('label' => 'Password', 'attr' => ['name' => 'password']))
             ->add('email', TextType::class, array('label' => 'Email'))
+            ->add('url', TextType::class, array('label' => 'Url'))
             ->add('submit', SubmitType::class, array('label' => 'Login'))
             ->setMethod('POST')
         ;

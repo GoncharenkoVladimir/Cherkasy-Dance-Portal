@@ -29,7 +29,7 @@
                                 <img border="0" src="{{ post.getWebPath|imagine_filter('my_thumb2') }}">
                             </div>
                             <div class="post-content">
-                                {{ post.content }}
+                                {{ post.content|raw }}
                             </div>
                         </div>
                         <div class="post-footer" style="clear: both;">
