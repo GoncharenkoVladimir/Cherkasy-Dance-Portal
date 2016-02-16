@@ -1,0 +1,17 @@
+{% extends '@App/Admin/Admin/administrator.html.twig' %}
+
+{% block contentAdmin %}
+    <div class="block_add_post">
+        <h1>Edit post!</h1>
+        {{ form(form) }}
+    </div>
+{% endblock contentAdmin %}
+
+{% block javascripts %}
+    <script type="text/javascript" src="{{ asset('js/jquery.tagsinput.min.js') }}"></script>
+    <script>
+        jQuery(document).ready(function(){
+            $('#add_post_tag_list').tagsInput();
+        })
+    </script>
+{% endblock javascripts %}

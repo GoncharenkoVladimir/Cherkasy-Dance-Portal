@@ -1,0 +1,45 @@
+{% extends '@App/Admin/Admin/administrator.html.twig' %}
+
+{% block contentAdmin %}
+    <table>
+        <thead>
+            <tr>
+                <th>№</th>
+                <th>Posts</th>
+                <th>Author</th>
+                <th>Time create</th>
+                <th>Status</th>
+                <th>Tags</th>
+                <th>Comments</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        {% for value in posts %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td class="name">{{ value.title }}</td>
+                <td>
+                    {% if value.author %}
+                        {{ value.author.username }}
+                    {% else %}
+                        NONE
+                    {% endif %}
+                </td>
+                <td class="date">{{ value.createTime|date }}</td>
+                <td>{{ value.status }}</td>
+                <td class="tags">
+                    {% for tag in value.tags %}
+                        <span>{{ tag }},</span>
+                    {% endfor %}
+                </td>
+                <td>
+                    {{ value.comments|length }}
+                </td>
+                <td>
+                    <span class="btn btn-warning"><a href="{{ path('edit-post', { 'id': value.id }) }}">Edit</a></span>
+                    <span class="btn btn-danger"><a href="{{ path('delete-post', { 'id': value.id }) }}">Remove</a></span>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock contentAdmin %}

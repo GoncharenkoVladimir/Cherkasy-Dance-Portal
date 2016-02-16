@@ -1,0 +1,20 @@
+{
+  "name": "Cherkassy-Dance-Portal",
+  "version": "1.0.0",
+  "description": "Dance blog",
+  "devDependencies": {
+    "bower": "~1.6",
+    "gulp": "^3.9.0",
+    "gulp-clean": "^0.3.1",
+    "gulp-concat": "^2.6.0",
+    "gulp-less": "^3.0.5",
+    "gulp-uglify": "^1.5.1",
+    "less": "^2.5.3"
+  },
+  "main": "gulpfile.js",
+  "author": "",
+  "dependencies": {
+    "bower": "~1.6.6",
+    "gulp": "~3.9.0"
+  }
+}

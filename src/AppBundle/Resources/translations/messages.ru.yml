@@ -1,0 +1,14 @@
+menu:
+    home: Главная
+    about: О нас
+    contact: Контакты
+
+headers:
+    popular_news: Популярные новости.
+    welcome: Добро пожаловать
+    session: Сессия
+    post_by_tags: Статьи по категориям
+    search: Поиск
+    last_news: Последние новости
+    login: Вы вошли как
+    logout: Выйти

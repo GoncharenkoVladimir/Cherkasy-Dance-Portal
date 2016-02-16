@@ -1,0 +1,82 @@
+{% extends '@App/Default/main.html.twig' %}
+
+{% block title %}Post{% endblock %}
+
+{% block maincontent %}
+<div class="widget blog" id="blog">
+    <div class="blog-posts hfeed">
+        <div class="date-outer">
+            <div class="date-posts">
+                <div class="post-outer">
+                    <div class="post hentry">
+                        <div class="post-header">
+                            <h3 class="post-title entry-title">
+                                {{ post.title }}
+                            </h3><hr>
+                        </div>
+                        <div class="date_post">
+                            <span class="post-date">
+                                <i class="fa fa-calendar"></i>
+                                <span class="date">{{ post.updateTime|date }}</span>
+                            </span>
+                        </div>
+                        <div class="rating">
+                            <i class="fa fa-thumbs-o-up"></i>
+                            <span>Rating: {{ rating }}</span>
+                        </div>
+                        <div class="post-body entry-content" id="{{ post.slug }}">
+                            <div class="separator">
+                                <img border="0" src="{{ post.getWebPath|imagine_filter('my_thumb2') }}">
+                            </div>
+                            <div class="post-content">
+                                {{ post.content|raw }}
+                            </div>
+                        </div>
+                        <div class="post-footer" style="clear: both;">
+
+                        </div>
+                    </div>
+
+                        <div class="comments" id="comments">
+                            <h3>{{ comments|length }} Comments</h3>
+                            {% if comments|length > 0 %}
+                                <ul class="comments-list">
+                                    {% for value in comments %}
+                                        <li>
+                                            <div class="avatar-image-container">
+                                                <img src="https://img1.blogblog.com/img/anon36.png">
+                                            </div>
+                                            <div class="comment-block">
+                                            <span class="name-user">
+                                                {% if value.author %}
+                                                    {{ value.author }}
+                                                {% else %}
+                                                    NONE
+                                                {% endif %}
+
+                                            </span>
+                                                <div class="content-comments">
+                                                    {{ value.content }}
+                                                </div>
+                                            </div>
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% endif %}
+                            <div class="block-comment">
+                                {{ form(form_comment) }}
+                            </div>
+                        </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock maincontent %}
+{% block search %}
+{% endblock search %}
+{% block javascripts %}
+{% endblock %}
+
+{% block titlepage %}<h3 class="text-center"></h3>{% endblock titlepage %}

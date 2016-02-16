@@ -1,4 +1,3 @@
-www
-===
+Charcassy Dance Portal [![Build Status](https://travis-ci.org/GoncharenkoVladimir/Cherkasy-Dance-Portal.svg?branch=master)](https://travis-ci.org/GoncharenkoVladimir/Cherkasy-Dance-Portal)
 
-A Symfony project created on December 30, 2015, 10:32 am.
+./reload.sh - manager project

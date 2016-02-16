@@ -1,0 +1,28 @@
+{% extends '@App/Admin/Admin/administrator.html.twig' %}
+
+{% block contentAdmin %}
+    <table>
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>User</th>
+            <th>Email</th>
+            <th>Posts</th>
+            <th>Comments</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        {% for value in users %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td class="name-user">{{ value.username }}</td>
+                <td class="email">{{ value.email }}</td>
+                <td class="posts_count">{{ value.posts|length }}</td>
+                <td class="comments_count">{{ value.comments|length }}</td>
+                <td>
+                    <span class="btn btn-danger"><a href="{{ path('delete-user', { 'id': value.id }) }}">Remove</a></span>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock contentAdmin %}

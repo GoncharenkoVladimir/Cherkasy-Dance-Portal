@@ -1,0 +1,30 @@
+{% extends '@App/Admin/Admin/administrator.html.twig' %}
+
+{% block contentAdmin %}
+    <table>
+        <thead>
+        <tr>
+            <th>№</th>
+            <th>Content</th>
+            <th>Status</th>
+            <th>Create time</th>
+            <th>Author</th>
+            <th>Post</th>
+            <th>Action</th>
+        </tr>
+        </thead>
+        {% for value in comments %}
+            <tr>
+                <td>{{ loop.index }}</td>
+                <td class="content-comment">{{ value.content }}</td>
+                <td class="status-comment">{{ value.status }}</td>
+                <td class="create-time--comment">{{ value.createTime|date }}</td>
+                <td class="author-comment">{{ value.author }}</td>
+                <td class="post-comment">{{ value.post }}</td>
+                <td>
+                    <span class="btn btn-danger"><a href="{{ path('delete-comment', { 'id': value.id }) }}">Remove</a></span>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+{% endblock contentAdmin %}

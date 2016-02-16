@@ -1,0 +1,33 @@
+{% extends '@App/Default/main.html.twig' %}
+
+{% block title %}Admin panel!!!{% endblock %}
+
+{% block content %}
+    <div class="content" id="admin-panel">
+        <div class="control-panel">
+            <ul class="list-item-control-panel">
+                <li class="dropdown">
+                    <a href="" class="dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown">Posts<span class="caret"></span></a>
+
+                    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dropdownMenu1">
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ path('admin-posts') }}">All posts</a></li>
+                        <li role="presentation"><a role="menuitem" tabindex="-1" href="{{ path('add-post') }}">Add post</a></li>
+                    </ul>
+                </li>
+                <li><a href="{{ path('admin-users') }}">Users</a></li>
+                <li><a href="{{ path('admin-comments') }}">Comments</a></li>
+            </ul>
+        </div>
+        <div class="content-admin">
+            {% block contentAdmin %}
+            {% endblock contentAdmin %}
+        </div>
+    </div>
+    {% block sidebar %}
+    {% endblock sidebar %}
+{% endblock content %}
+
+
+{% block javascripts %}
+{% endblock javascripts %}
+{% block titlepage %}<h3 class="text-center">Admin panel!!!</h3>{% endblock titlepage %}

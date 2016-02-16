@@ -1,0 +1,11 @@
+AppBundle\Entity\Post:
+    post{1..60}:
+        title: <sentence($nbWords = 6)>
+        content: <text($maxNbChars = 20000)>
+        status: <randomElement(["published", "removed", "editing"])>
+        createTime: <dateTime($max = 'now')>
+        updateTime: <dateTime($max = 'now')>
+        tags: <numberBetween(1, 5)>x @tag*
+        path: 'keyboard.jpg'
+        author: @user*
+        rating: 0

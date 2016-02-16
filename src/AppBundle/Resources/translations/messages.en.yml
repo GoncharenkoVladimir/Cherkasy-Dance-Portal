@@ -1,0 +1,14 @@
+menu:
+    home: Home
+    about: About
+    contact: Contact
+
+headers:
+    popular_news: Popular news.
+    welcome: Welcome
+    session: Session
+    post_by_tags: Post by tags
+    search: Search
+    last_news: Last news
+    login: You login as
+    logout: Logout
