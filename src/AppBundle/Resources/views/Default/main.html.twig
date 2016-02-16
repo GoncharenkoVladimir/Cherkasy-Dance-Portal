@@ -21,8 +21,8 @@
         <div class="baner">
             <div class="language">
                 <ul>
-                    <li><a href="{{ path('homepage', {'_locale':'ru' }) }}">RU</a></li>
-                    <li><a href="{{ path('homepage', {'_locale':'en' }) }}">EN</a></li>
+                    <li><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale':'ru'})) }}">RU</a></li>
+                    <li><a href="{{ path(app.request.attributes.get('_route'), app.request.attributes.get('_route_params')|merge({'_locale':'en'})) }}">EN</a></li>
                 </ul>
             </div>
             <h2 class="text-center">Cherkassy Dance Portal</h2>
