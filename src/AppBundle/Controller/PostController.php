@@ -14,7 +14,7 @@ use AppBundle\Entity\Post;
 class PostController extends Controller
 {
     /**
-     * @Route("/{_locale}/post/{slug}", name="post_view", defaults={"tag" = 0, "_locale" = "en"})
+     * @Route("/{_locale}/post/{slug}", name="post_view", defaults={"tag" = 0, "_locale" = "en"}, options={"expose"=true})
      * @param string $slug
      * @Template()
      * @return array

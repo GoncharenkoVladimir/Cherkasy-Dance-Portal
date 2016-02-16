@@ -93,7 +93,7 @@
                                                     <div class="post hentry">
                                                         <div class="post-body entry-content" id="">
                                                             <div class="thumbs">
-                                                                <a href="{{ path('post_view', {'slug': value.slug }) }}" style="margin: 0px;">
+                                                                <a href="{{ path('post_view', {'slug': value.slug, '_locale': locale }) }}" style="margin: 0px;">
                                                                     <img src="{{ value.getWebPath|imagine_filter('my_thumb') }}">
                                                                 </a>
                                                             </div>
@@ -234,16 +234,16 @@
                             for (var i in json.posts) {
                                 $('.post-outer').html($('.post-outer').html() +
                                         "<div class=\"post hentry\"><div class=\"post-body entry-content\" id=\"\"><div class=\"thumbs\">" +
-                                        "<a href=\"post/"+ json.posts[i].slug +"\">"+
+                                        "<a href=\""+ Routing.generate('post_view', { _locale:"{{ locale }}", slug: json.posts[i].slug }, true) +"\">"+
                                         "<img src=\"http://cdp.salsa.ekreative.com/"+ json.posts[i].path +"\" width=\"350\" height=\"350\" alt=\"Wypas cookie caramels soufflé caramels cookie \">" +
                                         "</a></div>" +
                                         "<div class=\"items-right\">" +
                                         "<h3 class=\"post-title entry-title\">" +
-                                        "<a href=\"post/"+ json.posts[i].slug +"\">" + json.posts[i].title + "</a></h3>" +
+                                        "<a href=\""+ Routing.generate('post_view', { _locale:"{{ locale }}", slug: json.posts[i].slug }, true) +"\">" + json.posts[i].title + "</a></h3>" +
                                         "<h2 class=\"date-header\"><span>" + json.posts[i].createTime + "</span></h2>" +
                                         "<p class=\"excerpt\">" + json.posts[i].content + "</p>" +
                                         "<div class=\"jump-link\">" +
-                                        "<a href=\"post/"+ json.posts[i].slug +"\">Continue Reading<i class=\"fa fa-caret-right\"></i></a></div>" +
+                                        "<a href=\""+ Routing.generate('post_view', { _locale:"{{ locale }}", slug: json.posts[i].slug }, true) +"\">Continue Reading<i class=\"fa fa-caret-right\"></i></a></div>" +
                                         "</div><div style=\"clear:both;\"></div></div></div>");
                             }
                         }, 'json');

@@ -52,6 +52,11 @@ case $reload in
     phpunit -c app
 
 ;;
+5)
+    echo "Create admin user"
+    ./app/console app/console app:admin:create admin admin@admin.admin qwerty url
+
+;;
 
 0)
     exit 0
